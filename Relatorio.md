@@ -25,4 +25,4 @@ Numa pesquisa muito rapida, descobrimos duas aplicações com pequenas ideias do
 
 > Caso o utilizador clique no menu irá aparecer textos como detalhes dos carros, despesas, ultimas inspecções, entre outros.
 
-![](https://github.com/AndreZila01/Imagens/blob/main/Project%20Mobile/Esboco3.jpg)
+![](https://github.com/AndreZila01/Project-Mobile/blob/main/Imagens/Esboco1.jpg)
