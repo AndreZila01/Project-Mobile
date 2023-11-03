@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/DrawerLayout"
+<<<<<<< HEAD
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -34,4 +35,34 @@
         app:itemIconTint="@color/orange"
         app:itemTextColor="@color/orange"/>
 
+=======
+    tools:context=".MainActivity"
+
+    layout_width="match_parent"
+    layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/NavigationView"
+        app:headerLayout="@layout/navbar_menu"
+        app:menu="@menu/menunavbar"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start"/>
+>>>>>>> c3345ca (Atualizada o menu e adicionado icons de ambiente)
 </androidx.drawerlayout.widget.DrawerLayout>
