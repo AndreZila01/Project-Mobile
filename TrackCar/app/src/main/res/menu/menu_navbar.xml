@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+    <item android:id="@+id/nav_car" android:title="Car" android:icon="@drawable/car"></item>
+    <item android:id="@+id/nav_schedule" android:title="Agendamento" android:icon="@drawable/schedule"></item>
+    <item android:id="@+id/nav_screwdriver" android:title="Inspecções" android:icon="@drawable/screwdriver"></item>
+    <item android:id="@+id/nav_wallet" android:title="Carteira" android:icon="@drawable/wallet"></item>
+</group>
+</menu>

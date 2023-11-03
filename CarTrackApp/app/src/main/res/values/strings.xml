@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CarTrackApp</string>
+    <string name="menu_open">Aberto</string>
+    <string name="menu_close">Fechado</string>
+</resources>
