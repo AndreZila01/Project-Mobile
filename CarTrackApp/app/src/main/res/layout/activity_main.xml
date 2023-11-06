@@ -6,32 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/DrawerLayout"
-    tools:context=".MainActivity"
+    tools:context=".MainActivity">
 
-    layout_width="match_parent"
-    layout_height="match_parent">
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@color/white">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/ToolbarMain"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/cardview_shadow_start_color"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/NavigationView"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        android:layout_gravity="start"
         app:headerLayout="@layout/navbar_menu"
-        app:menu="@menu/menunavbar"
-        android:fitsSystemWindows="true"
-        android:layout_gravity="start"/>
+        app:menu="@menu/naviagation_drawer_menu"
+        app:itemIconTint="@color/orange"
+        app:itemTextColor="@color/orange"/>
+
 </androidx.drawerlayout.widget.DrawerLayout>
