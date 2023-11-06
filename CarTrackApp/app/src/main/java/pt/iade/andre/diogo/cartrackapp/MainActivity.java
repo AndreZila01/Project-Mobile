@@ -13,12 +13,10 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawerLayout;
-    NavigationView navigationView;
     Toolbar toolBar;
-    ActionBarDrawerToggle actionBarDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +27,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void background_doWork(){
+        toolBar = findViewById(R.id.ToolbarMain);
+        setSupportActionBar(toolBar);
+
         drawerLayout = findViewById(R.id.DrawerLayout);
-        navigationView = findViewById(R.id.NavigationView);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_open, R.string.menu_close);
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolBar, R.string.menu_open, R.string.menu_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
 
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        /*switch(itemId){
+            case R.id.nav_car:
+
+                break;
+        }*/
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed(){
+        if (drawerLayout.isDrawerOpen((GravityCompat.START)))
+            drawerLayout.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
+    }
+
+
+        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 /*switch (item.getItemId()){
@@ -46,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
-                }*/
+                }
                 return true;
             }
-        });
+        });*/
 
             /*
             * <item android:id="@+id/nav_car" android:title="Carros" android:icon="@drawable/car"></item>
@@ -57,5 +82,5 @@ public class MainActivity extends AppCompatActivity {
     <item android:id="@+id/nav_screwdriver" android:title="Inspeções" android:icon="@drawable/screwdriver"></item>
     <item android:id="@+id/nav_wallet" android:title="Carteira" android:icon="@drawable/wallet"></item>
             * */
-    }
+
 }
