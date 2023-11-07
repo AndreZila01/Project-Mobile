@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="344dp"
+        android:layout_height="226dp"
+        android:layout_marginTop="50dp"
+        android:contentDescription="IconLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconapp"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="@string/lblPassword"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextText"
+        app:layout_constraintStart_toStartOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="@string/lblUsernameEmail"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:autofillHints="" />
+
+    <!--
+    TODO: Ver porque o TextView do ajuda não aparece
+    -->
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:textColor="#8D6E63"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/lblAjuda" />
+
+    <Button
+        android:id="@+id/btnLogin"
+
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+
+        android:background="@drawable/button_login"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="@string/lblLogin"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
