@@ -2,4 +2,8 @@
     <string name="app_name">CarTrackApp</string>
     <string name="menu_open">Aberto</string>
     <string name="menu_close">Fechado</string>
+    <string name="lblUsernameEmail">Username ou Email</string>
+    <string name="lblPassword">Password</string>
+    <string name="lblAjuda">Caso de ajuda, cliquem aqui!</string>
+    <string name="lblLogin">Login</string>
 </resources>
