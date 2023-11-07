@@ -2,11 +2,8 @@
     <string name="app_name">CarTrackApp</string>
     <string name="menu_open">Aberto</string>
     <string name="menu_close">Fechado</string>
-<<<<<<< HEAD
     <string name="lblUsernameEmail">Username ou Email</string>
     <string name="lblPassword">Password</string>
     <string name="lblAjuda">Caso de ajuda, cliquem aqui!</string>
     <string name="lblLogin">Login</string>
-=======
->>>>>>> c3345ca (Atualizada o menu e adicionado icons de ambiente)
 </resources>
