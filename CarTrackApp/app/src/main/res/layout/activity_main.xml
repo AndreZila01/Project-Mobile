@@ -8,31 +8,6 @@
     android:id="@+id/DrawerLayout"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:background="@color/white">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/ToolbarMain"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/cardview_shadow_start_color"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
-    </RelativeLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/nav_view"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/navbar_menu"
-        app:menu="@menu/naviagation_drawer_menu"
-        app:itemIconTint="@color/orange"
-        app:itemTextColor="@color/orange"/>
 
     <RelativeLayout
         android:layout_height="match_parent"
@@ -48,6 +23,34 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/iconUser"
+            android:layout_alignBottom="@+id/ToolbarMain"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/usericon" />
+
+        <!--TODO: Fazer a ImageButton redonda!!-->
+        <ImageButton
+            android:id="@+id/button3"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="12dp"
+            android:text="+"
+            android:src="@drawable/plus"
+            android:scaleType="fitCenter"
+
+            />
+
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -59,5 +62,6 @@
         app:menu="@menu/naviagation_drawer_menu"
         app:itemIconTint="@color/orange"
         app:itemTextColor="@color/orange"/>
-        
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
