@@ -43,28 +43,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-
-        if(itemId == R.id.nav_car)
-        {
-            Intent intent = new Intent(MainActivity.this, CarrosActivity.class);
-        }
-        else if(itemId == R.id.nav_view){
-
-        }else if(itemId == R.id.nav_schedule){
-
-        }
-        else if(itemId == R.id.nav_screwdriver){
-
-        }else if(itemId == R.id.nav_wallet){
-
-        }
-
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     @Override
     public void onBackPressed(){
@@ -72,5 +50,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
         else
             super.onBackPressed();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int s = item.getItemId();
+
+        if(s == R.id.nav_car)
+        {
+            Intent intent = new Intent(MainActivity.this, CarrosActivity.class);
+            startActivity(intent); // Start the CarrosActivity
+
+            Toast.makeText(getApplicationContext(), "Clicado o 1", Toast.LENGTH_LONG).show();
+
+        }
+
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
