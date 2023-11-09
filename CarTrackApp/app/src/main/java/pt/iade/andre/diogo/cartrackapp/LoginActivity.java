@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 // TODO : Checkar valores e se estão na database!
-                if(txtPass.getText().toString()!="" && txtUserEm.getText().toString()!=""){
+                if(txtPass.getText().toString().isEmpty() && txtUserEm.getText().toString().isEmpty()){
                     if(txtPass.getText()=="admin" && txtPass.getText()=="admin"){
                         Toast.makeText(getApplicationContext(), "Clicado o botão", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
