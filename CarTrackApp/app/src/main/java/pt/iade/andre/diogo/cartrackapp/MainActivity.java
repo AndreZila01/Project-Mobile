@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -53,6 +54,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 // TODO: Fazer uma activity para ver o perfil do user
                 return true;
+            }
+        });
+        ImageButton imgbtnAdd = findViewById(R.id.btnCarPayvalue);
+        imgbtnAdd.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO: Adicionar a view activity adicionar fatura ou carro.
+
+
+            }
+        });
+
+        ImageButton imgbtnBack = findViewById(R.id.BackActivity);
+        imgbtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishActivity(1);
             }
         });
     }

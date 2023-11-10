@@ -38,7 +38,8 @@
 
         <!--TODO: Fazer a ImageButton redonda!!-->
         <ImageButton
-            android:id="@+id/button3"
+            android:contentDescription="Adicionar Carro\Despesa"
+            android:id="@+id/btnCarPayvalue"
             android:layout_width="55dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
@@ -60,8 +61,8 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/navbar_menu"
         app:menu="@menu/naviagation_drawer_menu"
-        app:itemIconTint="@color/orange"
-        app:itemTextColor="@color/orange"/>
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

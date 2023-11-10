@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CarrosActivity">
+    tools:context=".CarrosActivity"
+    android:id="@+id/MenuTop">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="248dp"
         android:layout_height="192dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="84dp"
         android:contentDescription="."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.184"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/car"
@@ -24,10 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="120dp"
         android:text="Alpha Romeu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
