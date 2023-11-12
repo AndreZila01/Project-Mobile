@@ -5,4 +5,5 @@
     <color name="NavBarMenuTop">#03A9F4</color>
     <color name="orange">#F36A3E</color>
     <color name="topmenu">#DC838383</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

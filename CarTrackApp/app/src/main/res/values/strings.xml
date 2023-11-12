@@ -6,4 +6,6 @@
     <string name="lblPassword">Password</string>
     <string name="lblAjuda">Caso de ajuda, cliquem aqui!</string>
     <string name="lblLogin">Login</string>
+    <string name="pctPerfil">Perfil de Utilizador</string>
+    <string name="lblHello">Olá Diogo</string>
 </resources>

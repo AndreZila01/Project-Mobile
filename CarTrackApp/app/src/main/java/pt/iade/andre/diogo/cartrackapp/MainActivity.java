@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     DrawerLayout drawerLayout;
     Toolbar toolBar;
-    ImageView imgUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +45,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);// procura no projeto um id nav_view e envia para o drawerLayout
         navigationView.setNavigationItemSelectedListener(this);
 
-        imgUser = findViewById(R.id.iconUser);
-        imgUser.setOnTouchListener(new View.OnTouchListener() {
+        ImageButton imgUser = findViewById(R.id.iconUser);
+        imgUser.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View arg0, MotionEvent arg1) {
-
-
+            public void onClick(View v) {
                 // TODO: Fazer uma activity para ver o perfil do user
-                return true;
             }
         });
+
         ImageButton imgbtnAdd = findViewById(R.id.btnCarPayvalue);
         imgbtnAdd.setOnClickListener(new View.OnClickListener(){
 
@@ -67,13 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        ImageButton imgbtnBack = findViewById(R.id.BackActivity);
-        imgbtnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finishActivity(1);
-            }
-        });
+
     }
 
 

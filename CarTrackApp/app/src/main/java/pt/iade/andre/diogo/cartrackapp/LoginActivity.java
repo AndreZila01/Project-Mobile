@@ -30,13 +30,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 // TODO : Checkar valores e se estão na database!
-                if(txtPass.getText().toString().isEmpty() && txtUserEm.getText().toString().isEmpty()){
-                    if(txtPass.getText().toString().equals("admin") && txtPass.getText().equals("admin")){
+                if(!txtPass.getText().toString().isEmpty() && !txtUserEm.getText().toString().isEmpty()){
+                    if(txtPass.getText().toString().equals("admin") && txtUserEm.getText().toString().equals("admin")){
                         Toast.makeText(getApplicationContext(), "Clicado o botão", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
                         startActivity(intent);
                     }
+                    else
+                        new AlertDialog.Builder(LoginActivity.this).setTitle("Campos em Falta!").setMessage("Os campos acima, não podem estar vazios!!").setPositiveButton(android.R.string.ok, null).setIcon(android.R.drawable.ic_dialog_alert).show();
+
                 }
                 else
                     new AlertDialog.Builder(LoginActivity.this).setTitle("Campos em Falta!").setMessage("Os campos acima, não podem estar vazios!!").setPositiveButton(android.R.string.ok, null).setIcon(android.R.drawable.ic_dialog_alert).show();
