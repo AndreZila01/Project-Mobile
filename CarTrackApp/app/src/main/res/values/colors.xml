@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="NavBarMenuTop">#03A9F4</color>
     <color name="orange">#F36A3E</color>
-    <color name="topmenu">#DC838383</color>
-    <color name="transparent">#00FFFFFF</color>
+    <color name="Topmenu">#DC838383</color>
+    <color name="Transparent">#00FFFFFF</color>
+    <color name="MenuPItems">#D2B2F9FB</color>
 </resources>
