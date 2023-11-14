@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        //imgUser.setOnClickListener(this::onClick);
+//TODO: Check https://stackoverflow.com/questions/32216629/how-to-handle-multiple-click-events-in-android
+
+
         ImageButton imgbtnAdd = findViewById(R.id.btnCarPayvalue);
         imgbtnAdd.setOnClickListener(new View.OnClickListener(){
 
@@ -64,9 +68,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-
+        // TODO Checkar se o user tem algum evento ou agendamento marcado
+        // Caso tenha faz isto: https://stackoverflow.com/questions/11368462/how-to-create-edittext-in-java-code-for-android
     }
+    public void onClick(View v)
+    {
+        /*
+        if(v == button1)
+        {
+            //play button1 sound
+        }
 
+        else if(v == button2)
+        {
+            //play button2 sound
+        }
+
+        else
+        {
+
+        }*/
+    }
 
     @Override
     public void onBackPressed(){

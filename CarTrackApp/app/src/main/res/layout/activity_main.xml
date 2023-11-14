@@ -41,6 +41,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="15dp"
+                android:layout_weight=".33"
                 tools:src="@drawable/fuelpumps" />
 
             <ImageView
@@ -50,15 +51,17 @@
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="13dp"
+                android:layout_weight=".33"
                 tools:srcCompat="@drawable/pricecar" />
 
             <ImageView
-                android:id="@+id/Noticias"
+                android:id="@+id/pctNoticias"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="15dp"
+                android:layout_weight=".33"
                 tools:srcCompat="@drawable/news" />
         </LinearLayout>
 

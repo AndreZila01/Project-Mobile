@@ -3,9 +3,14 @@
     <string name="menu_open">Aberto</string>
     <string name="menu_close">Fechado</string>
     <string name="lblUsernameEmail">Username ou Email</string>
+    <string name="lblUsername">Username</string>
+    <string name="lblEmail">Email</string>
+    <string name="lblConfEmail">Confirmar Email</string>
     <string name="lblPassword">Password</string>
+    <string name="lblConfPassword">Confirmar Password</string>
     <string name="lblAjuda">Caso de ajuda, cliquem aqui!</string>
     <string name="lblLogin">Login</string>
+    <string name="lblRegist">Registar</string>
     <string name="pctPerfil">Perfil de Utilizador</string>
     <string name="lblHello">Olá Diogo</string>
 </resources>
