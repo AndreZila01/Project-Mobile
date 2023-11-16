@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void background_doWork(){
+
+        //region Funcionalidades
         toolBar = findViewById(R.id.ToolbarMain); // procura no projeto um id com ToolbarMain e envia para toolBar
         setSupportActionBar(toolBar); //
 
@@ -46,6 +48,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         ImageButton imgUser = findViewById(R.id.iconUser);
+
+        ImageView imgBomba = findViewById(R.id.pctBdComb);
+        imgBomba.setImageResource(R.drawable.fuelpumps);
+
+        ImageView imgNoticias = findViewById(R.id.pctNoticias);
+        imgBomba.setImageResource(R.drawable.news);
+
+        ImageView imgPrice = findViewById(R.id.pctPrecosCarros);
+        imgPrice.setImageResource(R.drawable.pricecar);
+
+        ImageButton imgbtnAdd = findViewById(R.id.btnCarPayvalue);
+        //endregion
+
+        //region Events
         imgUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,19 +73,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //TODO: Check https://stackoverflow.com/questions/32216629/how-to-handle-multiple-click-events-in-android
 
 
-        ImageButton imgbtnAdd = findViewById(R.id.btnCarPayvalue);
         imgbtnAdd.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 // TODO: Adicionar a view activity adicionar fatura ou carro.
 
-
             }
         });
 
         // TODO Checkar se o user tem algum evento ou agendamento marcado
         // Caso tenha faz isto: https://stackoverflow.com/questions/11368462/how-to-create-edittext-in-java-code-for-android
+
+
+        imgBomba.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO: Adicionar a view activity adicionar bombas google maps.
+
+            }
+        });
+
+
+        imgNoticias.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO: Adicionar a view activity adicionar noticias.
+                Intent intent = new Intent(MainActivity.this, NoticiasActivity.class);
+                startActivity(intent); // Start the CarrosActivity
+
+            }
+        });
+
+        imgPrice.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO: Adicionar a view activity adicionar fatura ou carro.
+
+            }
+        });
+
+        //endregion
     }
     public void onClick(View v)
     {

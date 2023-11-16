@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lblConfEmail"
             android:layout_width="4dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="-10dp"
@@ -25,14 +25,15 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/editTextText8"
+            android:id="@+id/txtConfEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/lblConfEmail"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lblConfPass"
             android:layout_width="4dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="-10dp"
@@ -55,14 +56,15 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/editTextText8"
+            android:id="@+id/txtConfPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/lblConfPassword"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -75,24 +77,25 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lblPass"
             android:layout_width="4dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
+            android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:hint="@string/lblConfEmail"
             android:text="@string/lblPassword"
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/editTextText8"
+            android:id="@+id/txtPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/lblPassword"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -105,7 +108,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lblEmail"
             android:layout_width="4dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -114,14 +117,15 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/editTextText8"
+            android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/lblEmail"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -135,21 +139,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lblUser"
             android:layout_width="4dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/lblUsername" />
 
         <EditText
-            android:id="@+id/editTextText8"
+            android:id="@+id/txtUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/lblUsername"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

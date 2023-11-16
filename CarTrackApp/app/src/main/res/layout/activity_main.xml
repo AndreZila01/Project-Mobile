@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <!--Bombas de combustiveis ao pé do utilizador-->
+        <!--Bombas de combustiveis proximos do utilizador e seus preços ... api-->
 
         <!--Preços de mercado consoante a api ...-->
 
@@ -45,7 +45,7 @@
                 tools:src="@drawable/fuelpumps" />
 
             <ImageView
-                android:id="@+id/Precos_Carros"
+                android:id="@+id/pctPrecosCarros"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_marginStart="13dp"
