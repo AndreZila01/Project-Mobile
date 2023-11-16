@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     tools:context=".CarrosActivity"
     android:id="@+id/MenuTop">
 
@@ -31,8 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-=======
-    tools:context=".carActivity">
+
 
     <TextView
         android:id="@+id/textView"
@@ -44,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/first_car"
->>>>>>> MenuCar
+
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
