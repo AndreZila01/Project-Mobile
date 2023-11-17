@@ -29,8 +29,8 @@ public class LoginActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                // TODO : Checkar valores e se estão na database!
                 if(!txtPass.getText().toString().isEmpty() && !txtUserEm.getText().toString().isEmpty()){
+                // TODO : Checkar valores e se estão na database!
                     if(txtPass.getText().toString().equals("admin") && txtUserEm.getText().toString().equals("admin")){
                         Toast.makeText(getApplicationContext(), "Clicado o botão", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);

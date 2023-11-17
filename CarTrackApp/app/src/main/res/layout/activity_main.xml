@@ -57,6 +57,7 @@
             <ImageView
                 android:id="@+id/pctNoticias"
                 android:layout_width="110dp"
+                android:clickable="true"
                 android:layout_height="110dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="12dp"
@@ -95,7 +96,7 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <ImageButton
-            android:id="@+id/iconUser"
+            android:id="@+id/pcticonUser"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignBottom="@+id/ToolbarMain"
