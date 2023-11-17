@@ -4,31 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CarrosActivity">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="248dp"
-        android:layout_height="192dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/car"
-        tools:ignore="HardcodedText" />
+    tools:context=".carActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="83dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
         android:text="Alpha Romeu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/first_car"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Audi"
+        app:layout_constraintStart_toEndOf="@+id/second_car"
+        tools:layout_editor_absoluteY="276dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Mercedes"
+        app:layout_constraintStart_toEndOf="@+id/third_car"
+        tools:layout_editor_absoluteY="506dp" />
+
+    <ImageButton
+        android:id="@+id/first_car"
+        android:layout_width="232dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/car"
+        tools:layout_editor_absoluteX="18dp" />
+
+    <ImageButton
+        android:id="@+id/second_car"
+        android:layout_width="232dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/first_car"
+        app:srcCompat="@drawable/car"
+        tools:layout_editor_absoluteX="18dp" />
+
+    <ImageButton
+        android:id="@+id/third_car"
+        android:layout_width="232dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/second_car"
+        app:srcCompat="@drawable/car"
+        tools:layout_editor_absoluteX="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
