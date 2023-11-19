@@ -26,11 +26,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     DrawerLayout drawerLayout;
     Toolbar toolBar;
+    ActivityOnClickListener onClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        onClickListener = new ActivityOnClickListener();
 
         background_doWork(); // função para incrementar todos os valores aqui!!
     }
@@ -52,37 +55,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ImageButton imgUser = findViewById(R.id.iconUser);
 
         ImageView imgBomba = findViewById(R.id.pctBdComb);
-        imgBomba.setImageResource(R.drawable.fuelpumps);
 
         ImageView imgNoticias = findViewById(R.id.pctNoticias);
-        imgBomba.setImageResource(R.drawable.news);
+
 
         ImageView imgPrice = findViewById(R.id.pctPrecosCarros);
-        imgPrice.setImageResource(R.drawable.pricecar);
 
         ImageButton imgbtnAdd = findViewById(R.id.btnCarPayvalue);
         //endregion
 
         //region Events
-        imgUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: Fazer uma activity para ver o perfil do user
-            }
-        });
+        imgUser.setOnClickListener(onClickListener);
 
         //imgUser.setOnClickListener(this::onClick);
 //TODO: Check https://stackoverflow.com/questions/32216629/how-to-handle-multiple-click-events-in-android
 
 
-        imgbtnAdd.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                // TODO: Adicionar a view activity adicionar fatura ou carro.
-
-            }
-        });
+        imgbtnAdd.setOnClickListener(onClickListener);
 
         // TODO Checkar se o user tem algum evento ou agendamento marcado
         // Caso tenha faz isto: https://stackoverflow.com/questions/11368462/how-to-create-edittext-in-java-code-for-android
@@ -164,4 +153,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+<<<<<<< HEAD
 }
+=======
+
+    private class ActivityOnClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.nav_car) {
+
+            }
+        }
+    }
+}
+>>>>>>> 9dbfedc ( Corrigido alguns erros no codigo e começo de implementação do codigo na realidade)

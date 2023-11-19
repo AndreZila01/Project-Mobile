@@ -42,7 +42,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="15dp"
                 android:layout_weight=".33"
-                tools:src="@drawable/fuelpumps" />
+                app:srcCompat="@drawable/fuelpumps" />
 
             <ImageView
                 android:id="@+id/pctPrecosCarros"
@@ -52,7 +52,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="13dp"
                 android:layout_weight=".33"
-                tools:srcCompat="@drawable/pricecar" />
+                app:srcCompat="@drawable/pricecar" />
 
             <ImageView
                 android:id="@+id/pctNoticias"
@@ -62,7 +62,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="15dp"
                 android:layout_weight=".33"
-                tools:srcCompat="@drawable/news" />
+                app:srcCompat="@drawable/news" />
         </LinearLayout>
 
         <LinearLayout
