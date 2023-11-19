@@ -9,13 +9,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
+<<<<<<< HEAD
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+=======
+>>>>>>> MenuCar
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(s == R.id.nav_car)
         {
-            Intent intent = new Intent(MainActivity.this, CarrosActivity.class);
+            Intent intent = new Intent(MainActivity.this, carActivity.class);
             startActivity(intent); // Start the CarrosActivity
 
             Toast.makeText(getApplicationContext(), "Clicado o 1", Toast.LENGTH_LONG).show();
