@@ -24,6 +24,22 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.CarTrackApp" />
         <activity
+            android:name=".MenuLoginRegist"
+            android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
+            android:name=".MenuLogRegActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
+            android:name=".NoticiasActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
+            android:name=".RegistarActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>

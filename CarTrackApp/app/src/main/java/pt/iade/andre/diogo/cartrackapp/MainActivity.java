@@ -11,9 +11,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.view.MotionEvent;
+=======
+>>>>>>> 0036515 (Atualização de activitys)
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 =======
@@ -52,80 +54,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);// procura no projeto um id nav_view e envia para o drawerLayout
         navigationView.setNavigationItemSelectedListener(this);
 
-        ImageButton imgUser = findViewById(R.id.iconUser);
-
+        ImageButton imgUser = findViewById(R.id.pcticonUser);
         ImageView imgBomba = findViewById(R.id.pctBdComb);
-
         ImageView imgNoticias = findViewById(R.id.pctNoticias);
-
-
         ImageView imgPrice = findViewById(R.id.pctPrecosCarros);
-
         ImageButton imgbtnAdd = findViewById(R.id.btnCarPayvalue);
         //endregion
 
         //region Events
-        imgUser.setOnClickListener(onClickListener);
 
         //imgUser.setOnClickListener(this::onClick);
 //TODO: Check https://stackoverflow.com/questions/32216629/how-to-handle-multiple-click-events-in-android
-
-
-        imgbtnAdd.setOnClickListener(onClickListener);
-
         // TODO Checkar se o user tem algum evento ou agendamento marcado
         // Caso tenha faz isto: https://stackoverflow.com/questions/11368462/how-to-create-edittext-in-java-code-for-android
 
-
-        imgBomba.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                // TODO: Adicionar a view activity adicionar bombas google maps.
-
-            }
-        });
-
-
-        imgNoticias.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                // TODO: Adicionar a view activity adicionar noticias.
-                Intent intent = new Intent(MainActivity.this, NoticiasActivity.class);
-                startActivity(intent); // Start the CarrosActivity
-
-            }
-        });
-
-        imgPrice.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                // TODO: Adicionar a view activity adicionar fatura ou carro.
-
-            }
-        });
+        imgUser.setOnClickListener(this::onClick);
+        imgbtnAdd.setOnClickListener(this::onClick);
+        imgBomba.setOnClickListener(this::onClick);
+        imgNoticias.setOnClickListener(this::onClick);
+        imgPrice.setOnClickListener(this::onClick);
 
         //endregion
     }
     public void onClick(View v)
     {
-        /*
-        if(v == button1)
-        {
-            //play button1 sound
-        }
+        // TODO: Adicionar a view activity adicionar bombas google maps.
+        // TODO: Adicionar a view activity adicionar noticias.
 
-        else if(v == button2)
+        // TODO: Adicionar a view activity adicionar fatura ou carro.
+
+        int id = v.getId();
+
+        if(id == R.id.pctBdComb)
         {
+            //Intent intent = new Intent(MainActivity.this, .class);
+            //startActivity(intent);
+
+        }
+        else if(id == R.id.pctNoticias)
+        {
+            Intent intent = new Intent(MainActivity.this, NoticiasActivity.class);
+            startActivity(intent);
+
             //play button2 sound
         }
+        else if(id == R.id.pctPrecosCarros){
 
-        else
-        {
+        }
+        else if(id == R.id.pcticonUser){
 
-        }*/
+        }
     }
 
     @Override
@@ -146,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent); // Start the CarrosActivity
 
             Toast.makeText(getApplicationContext(), "Clicado o 1", Toast.LENGTH_LONG).show();
-
         }
 
 
