@@ -10,16 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import android.view.MotionEvent;
-=======
->>>>>>> 0036515 (Atualização de activitys)
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-=======
->>>>>>> MenuCar
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -130,9 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-<<<<<<< HEAD
-}
-=======
+
 
     private class ActivityOnClickListener implements View.OnClickListener {
 
@@ -144,4 +136,3 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 }
->>>>>>> 9dbfedc ( Corrigido alguns erros no codigo e começo de implementação do codigo na realidade)

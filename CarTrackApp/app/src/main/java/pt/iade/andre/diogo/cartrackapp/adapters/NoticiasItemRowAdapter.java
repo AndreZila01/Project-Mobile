@@ -1,9 +1,13 @@
 package pt.iade.andre.diogo.cartrackapp.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,10 +18,14 @@ import pt.iade.andre.diogo.cartrackapp.R;
 
 public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRowAdapter.ViewHolder> {
     private ArrayList<ClassNews> items;
+    private RelativeLayout pnl;
+    private TextView txtTitle;
+    private ImageView img;
+    private TextView txtmsg;
     private LayoutInflater inflater;
     private ItemClickListener clickListener;
 
-    public NoticiasActivity(Context context, ArrayList<ClassNews> items) {
+    public void NoticiasItemRowAdapter(Context context, ArrayList<ClassNews> items) {
         inflater = LayoutInflater.from(context);
         this.items = items;
         clickListener = null;
@@ -43,8 +51,9 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
      */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.row_todo_item, parent, false);
+        View view = inflater.inflate(R.layout.row_news_item, parent, false);
         return new ViewHolder(view);
+
     }
 
     /**
@@ -59,9 +68,9 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
         ClassNews item = items.get(position);
 
         //TODO:
-        //holder.doneCheck.setChecked(item.isDone());
-        //holder.titleLabel.setText(item.getTitle());
-        //holder.notesLabel.setText(item.getNotes());
+        holder.imgp.setImageURI(Uri.parse(item.getUrlImg()));//TODO: Checkar se funciona
+        holder.txtmsgp.setText(item.getTextOfNews());
+        holder.txtmsgp.setText(item.getTitleLo());
     }
 
     /**
@@ -78,9 +87,12 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
      * Class responsible for recycling the views as you scroll.
      */
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView titleLabel;
-        public TextView notesLabel;
-        public CheckBox doneCheck;
+        public RelativeLayout pnlp;
+        public TextView txtTitlep;
+        public ImageView imgp;
+        public View inflaterp;
+        public TextView txtmsgp;
+
 
         /**
          * Sets up the view that was inflated.
@@ -91,9 +103,11 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
             super(itemView);
 
             // Get the components in the view.
-            titleLabel = itemView.findViewById(R.id.title_label);
-            notesLabel = itemView.findViewById(R.id.notes_label);
-            doneCheck = itemView.findViewById(R.id.done_check);
+            pnlp = itemView.findViewById(R.id.pnlNoticias);
+            txtTitlep = itemView.findViewById(R.id.txtTitulo);
+            imgp = itemView.findViewById(R.id.imgNoticia);
+            inflaterp = itemView.findViewById(R.id.pnlNoticias);
+            txtmsgp = itemView.findViewById(R.id.txtMensagem);
 
             // Set what happens when the view gets clicked.
             itemView.setOnClickListener(this);
