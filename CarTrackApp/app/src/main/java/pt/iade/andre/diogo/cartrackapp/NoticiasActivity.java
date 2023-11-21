@@ -26,17 +26,18 @@ public class NoticiasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
+        itemsList = new ArrayList<ClassNews>();
+        itemsList.add(new ClassNews(1, new GregorianCalendar(), "T123", "Titulo", "https://images6.fanpop.com/image/photos/36900000/Blathers-animal-crossing-new-leaf-36917846-1836-1945.png", "dssdsd", "Eu"));
+        itemsList.add(new ClassNews(2, new GregorianCalendar(), "T12", "Tiulo", "https://images6.fanpop.com/image/photos/36900000/Blathers-animal-crossing-new-leaf-36917846-1836-1945.png", "dssdsd", "Eu"));
+
         background_doWork(); // função para incrementar todos os valores aqui!!
-        ClassNews clnews;
-        clnews = new ClassNews(1, new GregorianCalendar(), "T", "Titulo", "https://images6.fanpop.com/image/photos/36900000/Blathers-animal-crossing-new-leaf-36917846-1836-1945.png", "dssdsd", "Eu");
-        itemsList.add(clnews);
-    }
+        }
 
     private void background_doWork(){
 
         //RelativeLayout et = (RelativeLayout)findViewById(R.id.pnlNoticias);
 
-        ntcItemRowAdpdater = new NoticiasActivity(this, itemsList);
+        ntcItemRowAdpdater = new NoticiasItemRowAdapter(this, itemsList);
 
         itemsListView = (RecyclerView) findViewById(R.id.pnlNoticias);
         itemsListView.setLayoutManager(new LinearLayoutManager(this));

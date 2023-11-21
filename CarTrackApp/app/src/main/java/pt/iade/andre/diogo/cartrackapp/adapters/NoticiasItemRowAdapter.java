@@ -25,7 +25,7 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
     private LayoutInflater inflater;
     private ItemClickListener clickListener;
 
-    public void NoticiasItemRowAdapter(Context context, ArrayList<ClassNews> items) {
+    public NoticiasItemRowAdapter(Context context, ArrayList<ClassNews> items) {
         inflater = LayoutInflater.from(context);
         this.items = items;
         clickListener = null;
@@ -53,7 +53,6 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_news_item, parent, false);
         return new ViewHolder(view);
-
     }
 
     /**
