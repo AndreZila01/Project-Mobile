@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //region Events
 
         //imgUser.setOnClickListener(this::onClick);
-//TODO: Check https://stackoverflow.com/questions/32216629/how-to-handle-multiple-click-events-in-android
+
         // TODO Checkar se o user tem algum evento ou agendamento marcado
         // Caso tenha faz isto: https://stackoverflow.com/questions/11368462/how-to-create-edittext-in-java-code-for-android
 
@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View v)
     {
         // TODO: Adicionar a view activity adicionar bombas google maps.
-        // TODO: Adicionar a view activity adicionar noticias.
 
         // TODO: Adicionar a view activity adicionar fatura ou carro.
 

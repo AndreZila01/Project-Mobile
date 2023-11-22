@@ -21,17 +21,19 @@ public class SubMenus extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.top_menu_inflate);
 
         background_doWork(); // função para incrementar todos os valores aqui!!
     }
 
     private void background_doWork() {
+        // TODO: Perguntar ao professor Nathan pq isto não funciona ...
         ImageButton imgbtnBack = findViewById(R.id.BackActivity);
         imgbtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finishActivity(1);
+
+                finish();
             }
         });
     }

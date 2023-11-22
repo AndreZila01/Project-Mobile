@@ -34,24 +34,6 @@ public class ClassNews implements Serializable {
      *
      * @return List of items fetched from the web server.
      */
-    /*public static ArrayList<TodoItem> List() {
-        ArrayList<TodoItem> items = new ArrayList<TodoItem>();
-
-        // TODO: Fetch a list of items from the web server and populate the list with them.
-
-        // Simulate a fetch from the web server.
-        items.add(new TodoItem(1, false, "First todo item", new GregorianCalendar(),
-                "Some description"));
-        items.add(new TodoItem(2, true, "Finished task", new GregorianCalendar(),
-                "A finished task"));
-        items.add(new TodoItem(3, false, "A task for the future",
-                new GregorianCalendar(2023, 12, 10), ""));
-        items.add(new TodoItem(4, false, "Play Mariah Carey non-stop",
-                new GregorianCalendar(2023, 12, 24),
-                "All I want for christmas is you..."));
-
-        return items;
-    }*/
 
     /**
      * Gets the object from the web server by its ID in the database.
@@ -60,19 +42,16 @@ public class ClassNews implements Serializable {
      *
      * @return Object with data from our web server.
      */
-    /*public static ClassNews GetById(int id) {
-        // TODO: Fetch the item from the web server using its id and populate the object.
+    public static ClassNews GetById(int id) {
 
-        return new ClassNews(id, false, "Some title from the server", new GregorianCalendar(),
+        return new ClassNews(id, new GregorianCalendar(), "", "", "", "",
                 "Some description that we also get from the web server");
-    }*/
+    }
 
     /**
      * Saves the object information to the database.
      */
     /*public void save() {
-        // TODO: Send the object's data to our web server and update the database there.
-
         if (id == 0) {
             // This is a brand new object and must be a INSERT in the database.
 

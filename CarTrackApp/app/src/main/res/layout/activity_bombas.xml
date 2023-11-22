@@ -21,18 +21,29 @@
         android:layout_height="0dp">
        <RelativeLayout
            android:layout_width="match_parent"
-           android:layout_height="100dp"
+           android:layout_height="150dp"
            android:background="@color/blue"
-           android:id="@+id/comb1" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+           android:id="@+id/comb1"
+           android:layout_marginTop="0dp"/>
 
+        <RelativeLayout
+            android:id="@+id/comb2"
+            android:layout_below="@+id/comb1"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:background="@color/orange" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/black" />
 
+        <RelativeLayout
+            android:id="@+id/comb3"
+            android:layout_below="@+id/comb2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/black" />
+        <RelativeLayout
+            android:id="@+id/comb4"
+            android:layout_below="@+id/comb3"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/material_dynamic_neutral60" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

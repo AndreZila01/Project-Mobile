@@ -8,13 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
-
 import pt.iade.andre.diogo.cartrackapp.Models.ClassNews;
 import pt.iade.andre.diogo.cartrackapp.R;
+import com.squareup.picasso.Picasso;
+
 
 public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRowAdapter.ViewHolder> {
     private ArrayList<ClassNews> items;
@@ -66,10 +65,11 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
     public void onBindViewHolder(ViewHolder holder, int position) {
         ClassNews item = items.get(position);
 
-        //TODO:
-        holder.imgp.setImageURI(Uri.parse(item.getUrlImg()));//TODO: Checkar se funciona
+        //holder.imgp.setImageURI(Uri.parse(item.getUrlImg()));//TODO: Checkar se funciona NATHAN
+        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(holder.imgp);
+
         holder.txtmsgp.setText(item.getTextOfNews());
-        holder.txtmsgp.setText(item.getTitleLo());
+        holder.txtTitlep.setText(item.getTitleLo());
     }
 
     /**
