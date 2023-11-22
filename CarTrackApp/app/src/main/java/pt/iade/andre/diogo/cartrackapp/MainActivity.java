@@ -79,9 +79,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(id == R.id.pctBdComb)
         {
-            //Intent intent = new Intent(MainActivity.this, .class);
-            //startActivity(intent);
-
+            Intent intent = new Intent(MainActivity.this, .class);
+            startActivity(intent);
         }
         else if(id == R.id.pctNoticias)
         {
