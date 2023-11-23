@@ -41,6 +41,11 @@
             android:exported="true"
             android:theme="@style/Theme.CarTrackApp" />
         <activity
+            android:name=".BombActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>

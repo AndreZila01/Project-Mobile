@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import pt.iade.andre.diogo.cartrackapp.Models.ClassNews;
 import pt.iade.andre.diogo.cartrackapp.R;
+import com.squareup.picasso.Picasso;
 
 
 public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRowAdapter.ViewHolder> {

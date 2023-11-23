@@ -48,6 +48,12 @@ public class NoticiasActivity extends AppCompatActivity {
         //RelativeLayout et = (RelativeLayout)findViewById(R.id.pnlNoticias);
 
         ntcItemRowAdpdater = new NoticiasItemRowAdapter(this, itemsList);
+        ntcItemRowAdpdater.setOnClickListener(new NoticiasItemRowAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                return;
+            }
+        });
 
         itemsListView = (RecyclerView) findViewById(R.id.pnlNoticias);
         itemsListView.setLayoutManager(new LinearLayoutManager(this));

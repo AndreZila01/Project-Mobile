@@ -3,47 +3,294 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".BombActivity">
 
-    <include
-        android:id="@+id/some_id_if_needed"
-        layout="@layout/top_menu_inflate"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/some_id_if_needed"
+            layout="@layout/top_menu_inflate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/some_id_if_needed" >
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/comb1"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@color/blue">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="30dp"
+                        app:srcCompat="@drawable/fuelpumps" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/imageView4"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Diesel 10e"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="50€"
+                        android:textSize="34sp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/comb2"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/comb1"
+                    android:background="@color/orange">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="30dp"
+                        app:srcCompat="@drawable/fuelpumps" />
+
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/imageView5"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Diesel 10e"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="50€"
+                        android:textSize="34sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/comb3"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/comb2"
+                    android:background="@color/black">
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="30dp"
+                        app:srcCompat="@drawable/fuelpumps" />
+
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/imageView6"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Diesel 10e"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="50€"
+                        android:textSize="34sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/comb4"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/comb3"
+                    android:background="@color/blue">
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="30dp"
+                        app:srcCompat="@drawable/fuelpumps" />
+
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/imageView7"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Diesel 10e"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="50€"
+                        android:textSize="34sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/comb5"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/comb4"
+                    android:background="@color/orange">
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="30dp"
+                        app:srcCompat="@drawable/fuelpumps" />
+
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/imageView8"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Diesel 10e"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="50€"
+                        android:textSize="34sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/some_id_if_needed"
-        android:layout_height="0dp">
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="150dp"
-           android:background="@color/blue"
-           android:id="@+id/comb1"
-           android:layout_marginTop="0dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <RelativeLayout
-            android:id="@+id/comb2"
-            android:layout_below="@+id/comb1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/orange" />
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/comb3"
-            android:layout_below="@+id/comb2"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/black" />
-        <RelativeLayout
-            android:id="@+id/comb4"
-            android:layout_below="@+id/comb3"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/material_dynamic_neutral60" />
-    </RelativeLayout>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:text="TextView" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
+        </LinearLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
