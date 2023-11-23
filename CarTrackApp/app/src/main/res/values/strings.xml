@@ -13,4 +13,5 @@
     <string name="lblRegist">Registar</string>
     <string name="pctPerfil">Perfil de Utilizador</string>
     <string name="lblHello">Olá Diogo</string>
+    <string name="title_activity_car">activity_car</string>
 </resources>

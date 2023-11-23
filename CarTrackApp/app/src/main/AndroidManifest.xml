@@ -75,7 +75,7 @@ xmlns:tools="http://schemas.android.com/tools">
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 <application>
     <activity
-        android:name="pt.iade.andre.diogo.cartrackapp.Detalhe_do_carro"
+        android:name="pt.iade.andre.diogo.cartrackapp.DetalhesCarrosActivity"
         android:exported="false"
 
         />

@@ -12,7 +12,7 @@ public class CarrosActivity extends AppCompatActivity {
     protected void onCreate(Bundle bundle){
         Toast.makeText(getApplicationContext(), "Clicado o 2", Toast.LENGTH_LONG).show();
         super.onCreate(bundle);
-        setContentView(R.layout.activity_car);
+        setContentView(R.layout.activity_lista_carros);
         Background_DoWork();
 
     }
