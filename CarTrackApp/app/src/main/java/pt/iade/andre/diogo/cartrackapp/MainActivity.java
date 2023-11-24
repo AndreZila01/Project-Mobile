@@ -10,14 +10,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-<<<<<<< HEAD
+
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-=======
->>>>>>> MenuCar
+
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;

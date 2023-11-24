@@ -25,13 +25,19 @@ public class AdicionarCarro {
             this.consumo= consumo;
         }
         public static ArrayList<AdicionarCarro> List() {
-            ArrayList<AdicionarCarro> carros = new ArrayList<>();
+            ArrayList<AdicionarCarro> carros = new ArrayList<AdicionarCarro>();
+
+            carros.add(new AdicionarCarro("Mercedes", "","AA-01-AA","1497cm^3","Frente","150CV","1443KG","6.7km/L"));
+            carros.add(new AdicionarCarro("Ford", "Focus","AA-02-AA","999cm^3","Traz","125CV","1379KG","6.7km/L"));
+            carros.add(new AdicionarCarro("Opel","Zafira","AA-03-AA","1200cm^3","Frente","140CV","1400KG","6.7km/L"));
 
             return carros;
 
         }
-        public static AdicionarCarro GetById(int id) {
-            return new AdicionarCarro();
+        public static AdicionarCarro GetByMarca(String Marca) {
+
+            return new AdicionarCarro(Marca,"Focus","AA-02-AA","999cm^3","Traz","125CV","1379KG","6.7km/L");
+
         }
 
 

@@ -1,5 +1,8 @@
 package pt.iade.andre.diogo.cartrackapp;
 
+    import static pt.iade.andre.diogo.cartrackapp.R.layout.activity_lista_carros;
+
+    import android.annotation.SuppressLint;
     import android.content.Intent;
     import android.os.Bundle;
     import android.widget.ArrayAdapter;
@@ -12,45 +15,51 @@ package pt.iade.andre.diogo.cartrackapp;
 
     import java.util.List;
 
+    import pt.iade.andre.diogo.cartrackapp.adapeters.carrosrowadapters;
+
 public class ListaCarrosActivity extends AppCompatActivity {
      protected RecyclerView carroslistview;
+     protected carrosrowadapters CarroRowAdapter;
+
      protected ArrayList<AdicionarCarro> carroslist;
 
      private ListaDeCarros listaDeCarros;
 
 
+
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_carros);
+        setContentView(R.id.activity_lista_carros);
 
-        carroslist = AdicionarCarro.List();
+        ArrayList<AdicionarCarro> carros = AdicionarCarro.List();
 
-        setupComponents();
+        ListView listViewCarros = findViewById(R.id.carros_listview);
 
-        listaDeCarros = new ListaDeCarros();
-        AdicionarCarro carro1 = new AdicionarCarro("Toyota", "Corolla","AA-01-AA","1497cm^3","Frente","150CV","1443","6.7km/L");
-        AdicionarCarro carro2 = new AdicionarCarro("Ford", "Focus","AA-02-AA","999cm^3","Traz","125CV","1379KG","6.7km/L");
-        listaDeCarros.adicionarCarro(carro1);
-        listaDeCarros.adicionarCarro(carro2);
+        ArrayAdapter<AdicionarCarro> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                carros
+        );
 
-        ListView listViewCarros = findViewById(R.id.listViewCarros);
-        ArrayAdapter<AdicionarCarro> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeCarros.getListaDeCarros());
         listViewCarros.setAdapter(adapter);
 
         listViewCarros.setOnItemClickListener((adapterView, view, position, id) -> {
-            AdicionarCarro carroSelecionado = (AdicionarCarro) listaDeCarros.getListaDeCarros().get(position);
+            AdicionarCarro carroSelecionado = carros.get(position);
             abrirDetalhesCarro(carroSelecionado);
         });
+        setupComponents();
     }
-
-
 
     private void setupComponents() {
         setSupportActionBar(findViewById(R.id.toolbar2));
 
-        carroslistview = (RecyclerView)findViewById(R.id.carros_listew);
+        CarroRowAdapter = new carrosrowadapters(this, carroslist);
+
+        carroslistview = (RecyclerView)findViewById(R.id.carros_listview);
         carroslistview.setLayoutManager(new LinearLayoutManager(this));
+        carroslistview.setAdapter(CarroRowAdapter);
     }
 
     private void abrirDetalhesCarro(AdicionarCarro carro) {
@@ -81,6 +90,8 @@ public class ListaCarrosActivity extends AppCompatActivity {
         }
     }
 }
+
+
 
 
 

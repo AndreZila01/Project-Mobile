@@ -13,18 +13,13 @@ public class CarrosActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Clicado o 2", Toast.LENGTH_LONG).show();
         super.onCreate(bundle);
         setContentView(R.layout.activity_lista_carros);
-        Background_DoWork();
+
 
     }
 
     /*
     * https://cdn.dribbble.com/users/2366356/screenshots/6766094/dribbble_shot_4x.png
     * */
-    private void Background_DoWork() {
-        /*Cria um menu "classico" do layout top_menu_inflate*/
-        // TODO: Checkar se funciona isto ... https://stackoverflow.com/a/2336047
-        RelativeLayout item = (RelativeLayout)findViewById(R.id.MenuTop);
-        View child = getLayoutInflater().inflate(R.layout.top_menu_inflate, null);
-        item.addView(child);
+
     }
-}
+
