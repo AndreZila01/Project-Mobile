@@ -4,17 +4,29 @@ package pt.iade.andre.diogo.cartrackapp;
     import android.os.Bundle;
     import android.widget.ArrayAdapter;
     import android.widget.ListView;
+
     import androidx.appcompat.app.AppCompatActivity;
+    import androidx.recyclerview.widget.LinearLayoutManager;
+    import androidx.recyclerview.widget.RecyclerView;
     import java.util.ArrayList;
+
     import java.util.List;
 
 public class ListaCarrosActivity extends AppCompatActivity {
-    private ListaDeCarros listaDeCarros;
+     protected RecyclerView carroslistview;
+     protected ArrayList<AdicionarCarro> carroslist;
+
+     private ListaDeCarros listaDeCarros;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_carros);
+
+        carroslist = AdicionarCarro.List();
+
+        setupComponents();
 
         listaDeCarros = new ListaDeCarros();
         AdicionarCarro carro1 = new AdicionarCarro("Toyota", "Corolla","AA-01-AA","1497cm^3","Frente","150CV","1443","6.7km/L");
@@ -30,6 +42,15 @@ public class ListaCarrosActivity extends AppCompatActivity {
             AdicionarCarro carroSelecionado = (AdicionarCarro) listaDeCarros.getListaDeCarros().get(position);
             abrirDetalhesCarro(carroSelecionado);
         });
+    }
+
+
+
+    private void setupComponents() {
+        setSupportActionBar(findViewById(R.id.toolbar2));
+
+        carroslistview = (RecyclerView)findViewById(R.id.carros_listew);
+        carroslistview.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void abrirDetalhesCarro(AdicionarCarro carro) {

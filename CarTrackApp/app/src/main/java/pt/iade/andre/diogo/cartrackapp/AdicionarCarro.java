@@ -1,5 +1,7 @@
 package pt.iade.andre.diogo.cartrackapp;
 
+import java.util.ArrayList;
+
 public class AdicionarCarro {
         private final String marca;
         private final String modelo;
@@ -22,6 +24,17 @@ public class AdicionarCarro {
             this.peso= peso;
             this.consumo= consumo;
         }
+        public static ArrayList<AdicionarCarro> List() {
+            ArrayList<AdicionarCarro> carros = new ArrayList<>();
+
+            return carros;
+
+        }
+        public static AdicionarCarro GetById(int id) {
+            return new AdicionarCarro();
+        }
+
+
 
         public String getMarca() {
             return marca;
