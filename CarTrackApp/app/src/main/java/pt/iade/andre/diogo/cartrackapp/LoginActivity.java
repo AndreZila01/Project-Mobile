@@ -34,7 +34,11 @@ public class LoginActivity extends AppCompatActivity {
                     if(txtPass.getText().toString().equals("admin") && txtUserEm.getText().toString().equals("admin")){
                         Toast.makeText(getApplicationContext(), "Clicado o botão", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        txtPass.setText("");
+                        txtUserEm.setText("");
+                        txtUserEm.requestFocus();
                         startActivity(intent);
+
                     }
                     else
                         new AlertDialog.Builder(LoginActivity.this).setTitle("Campos em Falta!").setMessage("Os campos acima, não podem estar vazios!!").setPositiveButton(android.R.string.ok, null).setIcon(android.R.drawable.ic_dialog_alert).show();

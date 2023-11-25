@@ -1,9 +1,9 @@
 Create database TrackCar;
 
-Create table tblConsumo{
+Create table tblConsumo(
     idConsumo int identity(1,1) primary key not null, 
     Consumo varchar(100) not null
-}
+)
 
 create table tblCentroDeInspecao(
     idCentro int identity(1,1) primary key not null,
@@ -26,7 +26,7 @@ Create table tblInspecoes(
     CentroDeInspecao int foreign key references tblCentroDeInspecao(idCentro),
     idCarro int foreign key references tblCar(idCar),
     idEstado int foreign key references tblEstado(idEstado),
-    Reprobado boolean not null,
+    Reprovado bit not null,
 );
 
 Create table tblCar(
@@ -56,17 +56,11 @@ Create table tblMulta(
     ValorMulta decimal(9, 2) not null,
     Descricao varchar(300) not null,
     idMetodo int foreign key references tblMetodoDePagament(idMetodo)
-    Pago boolean not null,
+    Pago bit not null,
     DataHoraPagamento datetime,
     DataHoraMultado datetime not null,
 );
 
-Create table tbldetalhesCarro(
-    idDetalhesCarro int identity(1,1) primary key not null,
-    idCar int foreign key references tblCar(idCar),
-    idClient int foreign key references tblClient(idClient),
-    idMulta int foreign key references tblMulta(idMulta),
-);
 
 Create table tblClient(
 	idClient int identity(1,1) primary key not null,
@@ -75,6 +69,12 @@ Create table tblClient(
 	idLogin int Foreign Key references tblLogin(idLogin),
 	DataNascimento date not null,
 	Email varchar(150) not null,
-	idCarros int Foreign key references tbldetalhesCarro(idDetalhesCarro),
 	FiltroNoticias varchar(max),
+);
+
+Create table tbldetalhesCarro(
+    idDetalhesCarro int identity(1,1) primary key not null,
+    idCar int foreign key references tblCar(idCar),
+    idClient int foreign key references tblClient(idClient),
+    idMulta int foreign key references tblMulta(idMulta),
 );

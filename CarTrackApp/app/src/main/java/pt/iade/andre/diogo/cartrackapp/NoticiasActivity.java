@@ -37,8 +37,8 @@ public class NoticiasActivity extends AppCompatActivity {
         });
 
         itemsList = new ArrayList<ClassNews>();
-        itemsList.add(new ClassNews(1, new GregorianCalendar(), "T123", "Titulo", "https://images6.fanpop.com/image/photos/36900000/Blathers-animal-crossing-new-leaf-36917846-1836-1945.png", "dssdsd", "Eu"));
-        itemsList.add(new ClassNews(2, new GregorianCalendar(), "T12", "Tiulo", "https://images6.fanpop.com/image/photos/36900000/Blathers-animal-crossing-new-leaf-36917846-1836-1945.png", "312", "Eu"));
+        itemsList.add(new ClassNews(1, new GregorianCalendar(), "Concorrência da Tesla", "Quem são os chineses da BYD que vendem quase tantos carros elétricos como a Tesla e que já estão em Portugal?", "https://static.vecteezy.com/system/resources/previews/000/426/079/original/vector-car-icon.jpg", "De janeiro a outubro de 2023 as vendas acumuladas da BYD Auto ultrapassaram 2,3 milhões de unidades a nível global. Em Portugal, em poucos meses, já foram vendidos 400 carros\n", "Eu"));
+        itemsList.add(new ClassNews(2, new GregorianCalendar(), "Dispara número de carros a circularem sem seguro", "Dispara número de carros a circularem sem seguro", "https://static.vecteezy.com/system/resources/previews/000/426/079/original/vector-car-icon.jpg", "A portaria que eliminou a obrigação de ter o dístico do seguro automóvel só entrou em vigor a 11 de junho, mas não foi só o pequeno papel colado no vidro do carro que ‘desapareceu’ de muitos automóveis. Dados da Autoridade Nacional de Segurança Rodoviária (ANSR) revelados esta quinta-feira demonstram que nos primeiros sete meses deste ano o número de viaturas a circular sem seguro disparou quase 20% face a 2022.", "Eu"));
 
         background_doWork(); // função para incrementar todos os valores aqui!!
         }

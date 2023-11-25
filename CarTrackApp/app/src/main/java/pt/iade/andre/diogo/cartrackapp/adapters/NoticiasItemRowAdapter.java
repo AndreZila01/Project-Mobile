@@ -66,10 +66,10 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
         ClassNews item = items.get(position);
 
         //holder.imgp.setImageURI(Uri.parse(item.getUrlImg()));//TODO: Checkar se funciona NATHAN
-        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(holder.imgp);
+        Picasso.get().load(item.getUrlImg()).into(holder.imgp);
 
         holder.txtmsgp.setText(item.getTextOfNews());
-        holder.txtTitlep.setText(item.getTitleLo());
+        holder.txtTitlep.setText(item.getTitlesh());
     }
 
     /**
