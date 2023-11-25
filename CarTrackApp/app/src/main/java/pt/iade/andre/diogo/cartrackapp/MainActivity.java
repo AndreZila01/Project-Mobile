@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(s == R.id.nav_car)
         {
-            Intent intent = new Intent(MainActivity.this, carActivity.class);
+            Intent intent = new Intent(MainActivity.this, CarrosActivity.class);
             startActivity(intent); // Start the CarrosActivity
 
             Toast.makeText(getApplicationContext(), "Clicado o 1", Toast.LENGTH_LONG).show();
@@ -127,7 +127,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.nav_car) {
-
+                Intent intent = new Intent(MainActivity.this, CarrosActivity.class);
+                startActivity(intent);
             }
         }
     }

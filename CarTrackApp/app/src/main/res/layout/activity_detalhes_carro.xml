@@ -5,8 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="android:"
-    tools:context=".DetalhesCarrosActivity">
+    tools:context=".DetalhesCarroActivity">
 
   <TextView
       android:id="@+id/textViewModelo"
@@ -56,7 +55,8 @@
       android:layout_marginStart="30dp"
       android:text="Consumo:"
       app:layout_constraintStart_toStartOf="parent"
-      tools:layout_editor_absoluteY="593dp" />
+      tools:layout_editor_absoluteY="593dp"
+      tools:ignore="MissingConstraints" />
 
   <TextView
       android:id="@+id/textViewMatricula"
@@ -94,5 +94,6 @@
       android:layout_height="174dp"
       app:srcCompat="@drawable/car"
       tools:layout_editor_absoluteX="16dp"
-      tools:layout_editor_absoluteY="18dp" />
+      tools:layout_editor_absoluteY="18dp"
+      tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
