@@ -44,7 +44,10 @@
             android:name=".BombActivity"
             android:exported="true"
             android:theme="@style/Theme.CarTrackApp" />
-
+<activity
+            android:name=".Detalhe_do_carro"
+            android:exported="false"
+            android:theme="@style/Theme.CarTrackApp" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
