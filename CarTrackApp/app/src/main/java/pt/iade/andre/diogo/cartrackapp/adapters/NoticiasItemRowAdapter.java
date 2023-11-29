@@ -65,7 +65,6 @@ public class NoticiasItemRowAdapter extends RecyclerView.Adapter<NoticiasItemRow
     public void onBindViewHolder(ViewHolder holder, int position) {
         ClassNews item = items.get(position);
 
-        //holder.imgp.setImageURI(Uri.parse(item.getUrlImg()));//TODO: Checkar se funciona NATHAN
         Picasso.get().load(item.getUrlImg()).into(holder.imgp);
 
         holder.txtmsgp.setText(item.getTextOfNews());

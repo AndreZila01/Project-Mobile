@@ -26,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
         txtPass = findViewById(R.id.txtPass);
         txtUserEm = findViewById(R.id.txtUserEmail);
         Button btn = findViewById(R.id.btnLogin);
+
+        txtUserEm.setText("admin");
+        txtPass.setText("admin");
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

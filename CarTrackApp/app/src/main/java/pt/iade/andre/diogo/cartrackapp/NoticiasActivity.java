@@ -1,5 +1,6 @@
 package pt.iade.andre.diogo.cartrackapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -51,6 +52,11 @@ public class NoticiasActivity extends AppCompatActivity {
         ntcItemRowAdpdater.setOnClickListener(new NoticiasItemRowAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                Intent intent = new Intent(NoticiasActivity.this, DetalhesNewsActivity.class);
+                intent.putExtra("idNew", position);
+                intent.putExtra("Noticia", itemsList.get(position));
+
+                startActivityForResult(intent, 1);
                 return;
             }
         });

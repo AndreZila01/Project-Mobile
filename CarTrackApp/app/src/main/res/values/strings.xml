@@ -15,5 +15,6 @@
     <string name="pctPerfil">Perfil de Utilizador</string>
     <string name="lblHello">Olá Diogo</string>
     <string name="title_activity_car">activity_car</string>
+    <string name="apiGoogleMaps">AIzaSyA8ZT4gKjObDkc9s5NE7xVRDBuv7-j8HQI</string>
 
 </resources>
