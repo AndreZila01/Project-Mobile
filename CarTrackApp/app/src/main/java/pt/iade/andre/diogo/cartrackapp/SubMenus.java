@@ -27,7 +27,6 @@ public class SubMenus extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     private void background_doWork() {
-        // TODO: Perguntar ao professor Nathan pq isto não funciona ...
         ImageButton imgbtnBack = findViewById(R.id.BackActivity);
         imgbtnBack.setOnClickListener(new View.OnClickListener() {
             @Override

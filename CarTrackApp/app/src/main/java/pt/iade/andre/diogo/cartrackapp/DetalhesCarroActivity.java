@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import pt.iade.andre.diogo.cartrackapp.Models.ClassCar;
 
 public class DetalhesCarroActivity extends AppCompatActivity {
         @Override
@@ -13,35 +18,18 @@ public class DetalhesCarroActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_detalhes_carro);
 
-
             Intent intent = getIntent();
-            String Marca = intent.getStringExtra("Marca");
-            String Modelo = intent.getStringExtra("Modelo");
-            String Matricula = intent.getStringExtra("Matricula");
-            String Cilindrda = intent.getStringExtra("modelo");
-            String Sistema_de_tracao = intent.getStringExtra("Sistema de Tração");
-            String Potencia = intent.getStringExtra("Potencia");
-            String Peso = intent.getStringExtra("Peso");
-            String Consumo = intent.getStringExtra("Consumo");
+            int s = intent.getIntExtra("position", 1);
+            ClassCar item = (ClassCar) intent.getSerializableExtra("Carro");
 
-
-            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textViewMarca = findViewById(R.id.textViewMarca);
-            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textViewModelo = findViewById(R.id.textViewModelo);
-            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textViewMatricula = findViewById(R.id.textViewMatricula);
-            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textViewCilindrada = findViewById(R.id.textViewCilindrada);
-            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textViewSistema_de_tracao = findViewById(R.id.textViewSistema_de_tracao);
-            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textViewPotencia = findViewById(R.id.textViewPotencia);
-            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textViewPeso = findViewById(R.id.textViewPeso);
-            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView textViewConsumo = findViewById(R.id.textViewConsumo);
-
-            textViewMarca.setText("Marca: " + Marca);
-            textViewModelo.setText("Modelo: " + Modelo);
-            textViewModelo.setText("Matricula: " + Matricula);
-            textViewModelo.setText("Cilindrada: " + Cilindrda);
-            textViewModelo.setText("Sistema de traçao: " + Sistema_de_tracao);
-            textViewModelo.setText("Potencia: " + Potencia);
-            textViewModelo.setText("Peso: " + Peso);
-            textViewModelo.setText("Consumo: " + Consumo);
+            ((TextView) findViewById(R.id.textViewMarca)).setText(item.getModelo());
+            ((TextView) findViewById(R.id.textViewMatricula)).setText(item.getMatricula());
+            ((TextView) findViewById(R.id.textViewCilindrada)).setText(item.getCC());
+            ((TextView) findViewById(R.id.textViewConsumo)).setText(item.getConsumo());
+            ((TextView) findViewById(R.id.textViewModelo)).setText(item.getMesAno());
+            ((TextView) findViewById(R.id.textViewPotencia)).setText(item.getKmfeitos());
+            ((TextView) findViewById(R.id.textViewSistema_de_tracao)).setText(item.getUltimaLocalizacao());
+            Picasso.get().load(item.getUrlImg()).into(((ImageView) findViewById(R.id.pctImageCar)));
 
         }
     }

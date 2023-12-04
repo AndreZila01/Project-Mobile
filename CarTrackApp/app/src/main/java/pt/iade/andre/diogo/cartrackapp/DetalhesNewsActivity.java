@@ -41,7 +41,7 @@ public class DetalhesNewsActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.txtDNews)).setText(item.getTitleLo());
         ((TextView) findViewById(R.id.txtDInfo)).setText(item.getTextOfNews());
         ((TextView) findViewById(R.id.txtDAuthor)).setText(item.getAuthor());
-        ((TextView) findViewById(R.id.txtDData)).setText(""+item.getDate());// TODO: NATHAN perguntar o estranho formato das horas e como meter HH:MM DD:MM:YYYY
+        ((TextView) findViewById(R.id.txtDData)).setText(""+item.getDate());
         Picasso.get().load(item.getUrlImg()).into(((ImageView) findViewById(R.id.pctDImagem)));
 
 

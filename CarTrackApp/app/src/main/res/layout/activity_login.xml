@@ -47,9 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         android:autofillHints="" />
 
-    <!--
-    TODO: Ver porque o TextView do ajuda não aparece
-    -->
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

@@ -112,7 +112,6 @@
             android:src="@drawable/user"
             tools:ignore="TouchTargetSizeCheck" />
 
-        <!--TODO: Fazer a ImageButton redonda!!-->
         <ImageButton
             android:id="@+id/btnCarPayvalue"
             android:layout_width="55dp"

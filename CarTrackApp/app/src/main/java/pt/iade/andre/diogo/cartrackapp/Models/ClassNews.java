@@ -1,9 +1,11 @@
 package pt.iade.andre.diogo.cartrackapp.Models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class ClassNews implements Serializable {
     private int id;
@@ -91,8 +93,9 @@ public class ClassNews implements Serializable {
         this.LongTitle = title;
     }
 
-    public Calendar getDate() {
-        return date;
+    public String getDate() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(date.getTime()).toString();
+        //return (new SimpleDateFormat("dd-MM-YYYY").setCalendar(date));//("dd-MM-YYYY");
     }
 
     public void setDate(Calendar date) {

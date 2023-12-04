@@ -1,5 +1,7 @@
 package pt.iade.andre.diogo.cartrackapp;
 
+import static android.provider.CalendarContract.CalendarCache.URI;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -9,8 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -21,11 +21,16 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.function.Consumer;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 
 public class BombActivity extends AppCompatActivity {
     @Override
@@ -72,55 +77,55 @@ public class BombActivity extends AppCompatActivity {
                         List<String> providers = lm.getProviders(true);
                         Location location = null;
 
-                        for (int i = providers.size() - 1; i >= 0; i--) {
 
-                            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                                // TODO: Consider calling
-                                //    ActivityCompat#requestPermissions
-                                // here to request the missing permissions, and then overriding
-                                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                //                                          int[] grantResults)
-                                // to handle the case where the user grants the permission. See the documentation
-                                // for ActivityCompat#requestPermissions for more details.
+                        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
                                 return;
-                            }
-
-                            lm.requestSingleUpdate(LocationManager.GPS_PROVIDER, new LocationListener() {
-                                @Override
-                                public void onLocationChanged(@NonNull Location location) {
-                                    double lat = location.getLatitude();
-                                    Log.d("lat: ", ""+lat);
-                                    double lng = location.getLongitude();
-                                    Log.d("lng: ", ""+lng);
-                                }
-                            }, null);
-
-                                }
-
-
-                            } else {
-                                // No location access granted.
-                            }
                         }
-                );
+
+                        lm.requestSingleUpdate(LocationManager.GPS_PROVIDER, new LocationListener() {
+                            @Override
+                            public void onLocationChanged(@NonNull Location location) {
+                                double lat = location.getLatitude();
+                                Log.d("lat: ", ""+lat);
+                                double lng = location.getLongitude();
+                                Log.d("lng: ", ""+lng);
+
+                                //http://localhost:8080/bomb/localizacao/-13.66406/132.08234
+                                String path = "http://localhost:8080/bomb/localizacao/" + lat + "/" + lng;
+
+                                try {
+                                    Request rq = new Request.Builder().url(path).build();
+                                    OkHttpClient client = new OkHttpClient();
+
+                                    client.newCall(rq).enqueue(new Callback() {
+                                        @Override
+                                        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                                            Log.d("Error", ""+e);
+                                        }
+
+                                        @Override
+                                        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                                            Log.d("Message", ""+response.body().string());
+                                        }
+                                    });
+                                }
+                                catch (Exception ex) {
+                                    Log.d("s", ""+ex);
+                                }
+                                finally {
+                                    //urlConnection.disconnect();
+                                }
+
+                            }
+                        }, null);
+
+                    }
+                });
 
         locationPermissionRequest.launch(new String[] {
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
                 android.Manifest.permission.ACCESS_COARSE_LOCATION
         });
-
-
-
-        //TODO: ver com o prof. nathan: https://youtu.be/XimcwP-OzFg?t=280
-        //Localizar o utilizar pegar nessas coordenadas como "float" e enviar para a futura api...
-        //ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, Fine_Permision_Code);
-
-       /* Task<Location> task = fs.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                Log.d("Message Tag", location+"");
-            }
-        }*/
     }
 }

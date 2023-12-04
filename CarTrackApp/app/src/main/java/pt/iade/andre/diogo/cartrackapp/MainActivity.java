@@ -133,8 +133,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    /*
-    * TODO: Professor nathan ... quando o utilizador clica no botão voltar para trás que está com o SO, como minimizar a app. Codigo em baixo, mas não sei implementar
-    *  https://stackoverflow.com/a/28162995
-    * */
 }
