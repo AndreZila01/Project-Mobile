@@ -31,7 +31,7 @@ public class LoginController {
     public String getGreeting() {
         logger.info("Saying Hello to the world");
 
-        String url = "jdbc:mysql@localhost:3306";
+        String url = "jdbc:mysql://localhost:3306/trackcar";
         String user = "root";
         String pass = "admin";
         // You don't need a username and password for integrated security
@@ -39,7 +39,7 @@ public class LoginController {
         try {
             Connection connection = DriverManager.getConnection(url, user, pass);
             var st = connection.createStatement();
-            ResultSet rs = st.executeQuery("select * from tblContas");
+            ResultSet rs = st.executeQuery("select * from tblcar");
             System.out.println("Database connected!");
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
