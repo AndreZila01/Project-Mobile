@@ -16,5 +16,11 @@
     <string name="lblHello">Olá Diogo</string>
     <string name="title_activity_car">activity_car</string>
     <string name="apiGoogleMaps">AIzaSyA8ZT4gKjObDkc9s5NE7xVRDBuv7-j8HQI</string>
-
+    <string name="lblModelo">Modelo: </string>
+    <string name="lblCilindrada">Cilindrada: </string>
+    <string name="lblConsumo">Consumo: </string>
+    <string name="lblMesAno">Ano/Mes: </string>
+    <string name="lblKm">Km feitos: </string>
+    <string name="lbllastLoc">Ultima Localização: </string>
+    <string name="lblMatri">Matricula: </string>
 </resources>
