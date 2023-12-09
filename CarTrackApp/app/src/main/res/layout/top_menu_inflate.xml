@@ -17,9 +17,10 @@
             android:id="@+id/BackActivity"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:src="@drawable/back"
+            android:layout_alignParentLeft="true"
             android:scaleType="fitCenter"
-            android:layout_alignParentLeft="true">
+            android:src="@drawable/back">
+
 
         </ImageButton>
     </LinearLayout>

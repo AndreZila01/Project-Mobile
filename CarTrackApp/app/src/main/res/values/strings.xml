@@ -23,4 +23,6 @@
     <string name="lblKm">Km feitos: </string>
     <string name="lbllastLoc">Ultima Localização: </string>
     <string name="lblMatri">Matricula: </string>
+    <string name="lblSettings">Settings</string>
+    <string name="lblLogOut">LogOut</string>
 </resources>
