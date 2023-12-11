@@ -53,6 +53,10 @@
             android:exported="true"
             android:theme="@style/Theme.CarTrackApp" />
         <activity
+            android:name=".PlusActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="true"
             android:theme="@style/Theme.CarTrackApp" />

@@ -25,4 +25,18 @@
     <string name="lblMatri">Matricula: </string>
     <string name="lblSettings">Settings</string>
     <string name="lblLogOut">LogOut</string>
+    <string name="btnAdicionarCar">Adicionar Carro</string>
+    <string name="txtMatricula">Adicionar Carro</string>
+    <string name="txtModelo">Adicionar Carro</string>
+    <string name="txtCilindrada">Adicionar Carro</string>
+    <string name="txtAnoMes">Adicionar Carro</string>
+    <string name="txtConsumo">Adicionar Carro</string>
+    <string name="txtKm">meter os kilometros</string>
+
+    <string-array name="Consumo">
+        <item>Eletrico</item>
+        <item>Gasoleo</item>
+        <item>Gas</item>
+        <item>Gasolina</item>
+    </string-array>
 </resources>

@@ -96,6 +96,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
             startActivity(intent);
         }
+        else if(id == R.id.btnCarPayvalue){
+            Intent intent = new Intent(MainActivity.this, PlusActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
