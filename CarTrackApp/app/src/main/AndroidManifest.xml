@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 
     <application
@@ -52,7 +52,15 @@
             android:name=".BombActivity"
             android:exported="true"
             android:theme="@style/Theme.CarTrackApp" />
-<activity
+        <activity
+            android:name=".PlusActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
             android:name=".DetalhesCarroActivity"
             android:exported="false"
             android:theme="@style/Theme.CarTrackApp" />

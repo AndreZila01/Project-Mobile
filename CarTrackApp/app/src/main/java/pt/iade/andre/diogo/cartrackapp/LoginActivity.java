@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(txtPass.getText().toString().equals("admin") && txtUserEm.getText().toString().equals("admin")){
                         Toast.makeText(getApplicationContext(), "Clicado o botão", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         txtPass.setText("");
                         txtUserEm.setText("");
                         txtUserEm.requestFocus();

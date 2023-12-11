@@ -116,8 +116,8 @@ public class BombController {
                     json += "{\"id\":" + values;
                     urls = new URL(string.split("href=\"")[1].split("\"")[0].toString());
 
-                    json += ",\"NomeBomba\":"
-                            + string.split("<div class=\"simg ")[1].split("></div>")[1].split("</div>")[0];
+                    json += ",\"NomeBomba\":\""
+                            + string.split("<div class=\"simg ")[1].split("></div>")[1].split("</div>")[0]+"\"";
                     if (string.contains("simg-f5\"></div><span>€ "))
                         json += ",\"GasoleoS\":"
                                 + Float.parseFloat(string.split("simg-f5\"></div><span>€ ")[1].split("</span>")[0]);

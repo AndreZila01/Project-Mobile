@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);// procura no projeto um id nav_view e envia para o drawerLayout
         navigationView.setNavigationItemSelectedListener(this);
 
-        ImageButton imgUser = findViewById(R.id.pcticonUser);
+        ImageView imgUser = findViewById(R.id.pcticonUser);
         ImageView imgBomba = findViewById(R.id.pctBdComb);
         ImageView imgNoticias = findViewById(R.id.pctNoticias);
         ImageView imgPrice = findViewById(R.id.pctPrecosCarros);
@@ -93,7 +93,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         else if(id == R.id.pcticonUser){
-
+            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+            startActivity(intent);
+        }
+        else if(id == R.id.btnCarPayvalue){
+            Intent intent = new Intent(MainActivity.this, PlusActivity.class);
+            startActivity(intent);
         }
     }
 
