@@ -150,6 +150,8 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClick"
+                android:clickable="true"
                 android:text="@string/lblMesAno" />
 
             <EditText
@@ -159,6 +161,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
+                android:editable="false"
                 android:hint="Name" />
         </LinearLayout>
 
