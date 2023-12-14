@@ -3,9 +3,11 @@ package pt.iade.andre.diogo.cartrackapp;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +16,10 @@ import com.google.firebase.crashlytics.buildtools.reloc.com.google.errorprone.an
 
 import java.time.DateTimeException;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class PlusActivity extends AppCompatActivity {
+    GregorianCalendar dateWhatever;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +44,37 @@ public class PlusActivity extends AppCompatActivity {
         int s = v.getId();
 
         if(s == R.id.txtPlusAnoMes){
-            Calendar sSS = Calendar.getInstance();
-            int Date = sSS.get(Calendar.DAY_OF_MONTH);
-            int Year = sSS.get(Calendar.YEAR);
-            int Month = sSS.get(Calendar.MONTH);
-            int Hour = sSS.get(Calendar.HOUR);
-            int Minute = sSS.get(Calendar.MINUTE);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    this);
+            final Calendar c = Calendar.getInstance();
+            final int year = c.get(Calendar.YEAR);
+            final int month = c.get(Calendar.MONTH);
+            final int day = c.get(Calendar.DAY_OF_MONTH);
+            final int hour = c.get(Calendar.HOUR_OF_DAY);
+            final int minute = c.get(Calendar.MINUTE);
 
-            Calendar.getInstance();
+            DatePickerDialog datepick = new DatePickerDialog(PlusActivity.this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    dateWhatever = new GregorianCalendar(year, month, dayOfMonth);
+                    TimePickerDialog timepick = new TimePickerDialog(PlusActivity.this, new TimePickerDialog.OnTimeSetListener() {
 
-            datePickerDialog.show();
+
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            //rt1.setText(hourOfDay + ":" + minute);
+                            Log.d("", "dada");
 
 
+                        }
+                    }, hour, minute, true
+                    );
+                    timepick.setTitle("select time");
+                    timepick.show();
+                }
+            } ,year,month,day);
+            datepick.setTitle("select date");
+            datepick.show();
+            Log.d("", "");
 
         }
         else if (!(s == R.id.btnSaveAddValue)) {
