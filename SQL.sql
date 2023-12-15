@@ -116,4 +116,34 @@ Create table tblCarrosMultas(
     foreign key (idMulta) references tblMulta(idMulta)
 );
 
+insert table tblLogin(Username, Password) values('admin', 'admin')
+insert table tblClient(FirstName, LastName, idLogin, DataNascimento, Email) values('Andre', 'Cust', 1, '2023-12-14', 'admin@gmail.com')
 
+insert table tblConsumo(Consumo) values('eletrico')
+insert table tblConsumo(Consumo) values('gasoleo')
+insert table tblConsumo(Consumo) values('gasolina')
+insert table tblConsumo(Consumo) values('GPL')
+insert table tblConsumo(Consumo) values('Hibrido')
+
+insert table tblCar(MatriculaCarro, Modelo, MesAno, CV, Consumo, KmFeitos) values('AE-58-FD', 'Fiat 500', '23/11', 250, 1, 150.23)
+
+insert table tblDCentroDeInspecao(Nome, Morada, Telefone, Email, ChefeDoCentro) values('Mecanica', '...', '+351912333222', 'mecanicos@gmail.com', 'Pedro')
+
+insert table tblEstado(Estado, MensagemdoEstado) values('Reprovado v1', 'Motor em baixo')
+insert table tblEstado(Estado, MensagemdoEstado) values('Reprovado v2', 'Sem luzes em baixo')
+insert table tblEstado(Estado, MensagemdoEstado) values('Reprovado v3', 'Bateria em baixo')
+insert table tblEstado(Estado, MensagemdoEstado) values('Aprovado v1', 'Com problemas nos maximos')
+
+insert table tblInspecoes(DataHora, CentroDeInspecao, idEstado, Reprovado) values('2023-12-14 5:00', 1, 4, False)
+
+insert table tblInsCar(idCar, idInspecao) values(1,1)
+
+insert table tblMetodoDePagament(Meotod) values('dinhiro')
+insert table tblMetodoDePagament(Meotod) values('cartao de credito')
+insert table tblMetodoDePagament(Meotod) values('cartao de debito')
+insert table tblMetodoDePagament(Meotod) values('cheque')
+insert table tblMetodoDePagament(Meotod) values('dinheiro e cartao de credito')
+
+insert table tblMulta(ValorMulta, Descricao, idMetodo, Pago, DataHoraMultado, DataHoraPagamento) values(15.99, 'Excesso de velocidade, num local de 50km/h', 1, True, '2023-12-14 18:00', '2023-12-01 10:00')
+
+insert table tbldetalhesCarro(idCar, idClient, idMulta) values(1, 1, 1)
