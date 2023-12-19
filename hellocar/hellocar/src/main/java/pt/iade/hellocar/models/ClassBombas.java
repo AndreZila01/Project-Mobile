@@ -2,7 +2,7 @@ package pt.iade.hellocar.models;
 
 public class ClassBombas {
     public static class Bombas {
-    
+
         public int Id;
         public String Bomba;
         public String Url;
@@ -13,6 +13,6 @@ public class ClassBombas {
         public float GasolinaE95;
         public float Gasolina98;
         public float GasolinaE98;
-        public float GPLAuto;            
-        }
+        public float GPLAuto;
+    }
 }

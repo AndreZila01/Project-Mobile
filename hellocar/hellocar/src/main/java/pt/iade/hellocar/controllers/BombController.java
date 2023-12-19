@@ -1,15 +1,10 @@
 package pt.iade.hellocar.controllers;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
@@ -21,6 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+import com.mysql.cj.xdevapi.JsonArray;
+
 import pt.iade.hellocar.models.ClassBombas.Bombas;
 
 @RestController
@@ -28,7 +26,6 @@ import pt.iade.hellocar.models.ClassBombas.Bombas;
 public class BombController {
     private Logger logger = LoggerFactory.getLogger(BombController.class);
 
-    
     @GetMapping(path = "/localizacao/{lat}/{loc}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getGreeting(@PathVariable("lat") float latitude, @PathVariable("loc") float longitude) {
         logger.info("Saying Hello to the world");
@@ -117,46 +114,46 @@ public class BombController {
                     urls = new URL(string.split("href=\"")[1].split("\"")[0].toString());
 
                     json += ",\"NomeBomba\":\""
-                            + string.split("<div class=\"simg ")[1].split("></div>")[1].split("</div>")[0]+"\"";
-                    if (string.contains("simg-f5\"></div><span>€ "))
+                            + string.split("<div class=\"simg ")[1].split("></div>")[1].split("</div>")[0] + "\"";
+                    if (string.contains("simg-f5\"></div><span>â‚¬ "))
                         json += ",\"GasoleoS\":"
-                                + Float.parseFloat(string.split("simg-f5\"></div><span>€ ")[1].split("</span>")[0]);
+                                + Float.parseFloat(string.split("simg-f5\"></div><span>â‚¬ ")[1].split("</span>")[0]);
                     else
                         bb.GasoleoS = 0.0f;
 
-                    if (string.contains("simg-f4\"></div><span>€ "))
+                    if (string.contains("simg-f4\"></div><span>â‚¬ "))
                         json += ",\"GasoleoE\":"
-                                + Float.parseFloat(string.split("simg-f4\"></div><span>€ ")[1].split("</span>")[0]);
+                                + Float.parseFloat(string.split("simg-f4\"></div><span>â‚¬ ")[1].split("</span>")[0]);
                     else
                         bb.GasoleoE = 0.0f;
 
-                    if (string.contains("simg-f10\"></div><span>€ "))
+                    if (string.contains("simg-f10\"></div><span>â‚¬ "))
                         json += ",\"GasolinaS95\":" + Float
-                                .parseFloat(string.split("simg-f10\"></div><span>€ ")[1].split("</span>")[0]);
+                                .parseFloat(string.split("simg-f10\"></div><span>â‚¬ ")[1].split("</span>")[0]);
                     else
                         bb.GasolinaS95 = 0.0f;
 
-                    if (string.contains("simg-f8\"></div><span>€ "))
+                    if (string.contains("simg-f8\"></div><span>â‚¬ "))
                         json += ",\"GasolinaE95\":" + Float
-                                .parseFloat(string.split("simg-f8\"></div><span>€ ")[1].split("</span>")[0]);
+                                .parseFloat(string.split("simg-f8\"></div><span>â‚¬ ")[1].split("</span>")[0]);
                     else
                         bb.GasolinaE95 = 0.0f;
 
-                    if (string.contains("simg-f6\"></div><span>€ "))
+                    if (string.contains("simg-f6\"></div><span>â‚¬ "))
                         json += ",\"Gasolina98\":" + Float
-                                .parseFloat(string.split("simg-f6\"></div><span>€ ")[1].split("</span>")[0]);
+                                .parseFloat(string.split("simg-f6\"></div><span>â‚¬ ")[1].split("</span>")[0]);
                     else
                         bb.Gasolina98 = 0.0f;
 
-                    if (string.contains("simg-f9\"></div><span>€ "))
+                    if (string.contains("simg-f9\"></div><span>â‚¬ "))
                         json += ",\"GasolinaE98\":" + Float
-                                .parseFloat(string.split("simg-f9\"></div><span>€ ")[1].split("</span>")[0]);
+                                .parseFloat(string.split("simg-f9\"></div><span>â‚¬ ")[1].split("</span>")[0]);
                     else
                         bb.GasolinaE98 = 0.0f;
 
-                    if (string.contains("simg-f14\"></div><span>€ "))
+                    if (string.contains("simg-f14\"></div><span>â‚¬ "))
                         json += ",\"GPLAuto\":"
-                                + Float.parseFloat(string.split("simg-f14\"></div><span>€ ")[1].split("</span>")[0]);
+                                + Float.parseFloat(string.split("simg-f14\"></div><span>â‚¬ ")[1].split("</span>")[0]);
                     else
                         bb.GPLAuto = 0.0f;
 
@@ -204,5 +201,154 @@ public class BombController {
         return json.substring(0, (json.length() - 1)) + "]";
         // return "Hello World";
 
+    }
+
+    @GetMapping(path = "/localizacao/{lat}/{loc}/bombas/avg", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String AVG(@PathVariable("lat") float latitude, @PathVariable("loc") float longitude) {
+
+        String s = BombasClose(latitude, longitude);
+        try {
+            Bombas[] json = new Gson().fromJson(s, Bombas[].class);
+            int len = json.length;
+
+            float GasoleoS = 0.0f;
+            float GasoleoE = 0.0f;
+            float GasolinaS95 = 0.0f;
+            float GasolinaE95 = 0.0f;
+            float Gasolina98 = 0.0f;
+            float GasolinaE98 = 0.0f;
+            float GPLAuto = 0.0f;
+
+            // String aaa = (String) json.get(1).toString();
+
+            // GasoleoS += (((JsonValue) json.get(a)).get("GasoleoS").getAsFloat());
+            for (int a = 0; a < len; a++) {
+                GasoleoS += json[a].GasoleoS;
+                GasoleoE += json[a].GasoleoE;
+                GasolinaS95 += json[a].GasolinaS95;
+                GasolinaE95 += json[a].GasolinaE95;
+                Gasolina98 += json[a].Gasolina98;
+                GasolinaE98 += json[a].GasolinaE98;
+                GPLAuto += json[a].GPLAuto;
+            }
+
+            GasoleoS = (GasoleoS / len);
+            GasoleoE = (GasoleoE / len);
+            GasolinaS95 = (GasolinaS95 / len);
+            GasolinaE95 = (GasolinaE95 / len);
+            Gasolina98 = (Gasolina98 / len);
+            GasolinaE98 = (GasolinaE98 / len);
+            GPLAuto = (GPLAuto / len);
+            return "[{\"GasoleoS\":" + GasoleoE + ",\"GasoleoE\":" + GasoleoE + ",\"GasolinaS95\":" + GasolinaS95
+                    + ",\"GasolinaE95\":" + GasolinaE95 + ",\"Gasolina98\":" + Gasolina98 + ",\"GasolinaE98\":"
+                    + GasolinaE98 + ",\"GPLAuto\":" + GPLAuto + "}]";
+        } catch (Exception ex) {
+            System.out.println("Erro: " + ex.getMessage());
+        }
+        return "";
+    }
+
+    @GetMapping(path = "/localizacao/{lat}/{loc}/bombas/max", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String Max(@PathVariable("lat") float latitude, @PathVariable("loc") float longitude) {
+
+        String s = BombasClose(latitude, longitude);
+        try {
+            Bombas[] json = new Gson().fromJson(s, Bombas[].class);
+            int len = json.length;
+
+            float GasoleoS = 0.0f;
+            float GasoleoE = 0.0f;
+            float GasolinaS95 = 0.0f;
+            float GasolinaE95 = 0.0f;
+            float Gasolina98 = 0.0f;
+            float GasolinaE98 = 0.0f;
+            float GPLAuto = 0.0f;
+
+            // String aaa = (String) json.get(1).toString();
+
+            // GasoleoS += (((JsonValue) json.get(a)).get("GasoleoS").getAsFloat());
+            for (int a = 0; a < len; a++) {
+                if (GasoleoS < json[a].GasoleoS)
+                    GasoleoS = json[a].GasoleoS;
+
+                if (GasoleoE < json[a].GasoleoE)
+                    GasoleoE = json[a].GasoleoE;
+
+                if (GasolinaS95 < json[a].GasolinaS95)
+                    GasolinaS95 = json[a].GasolinaS95;
+
+                if (GasolinaE95 < json[a].GasolinaE95)
+                    GasolinaE95 = json[a].GasolinaE95;
+
+                if (Gasolina98 < json[a].Gasolina98)
+                    Gasolina98 = json[a].Gasolina98;
+
+                if (GasolinaE98 < json[a].GasolinaE98)
+                    GasolinaE98 = json[a].GasolinaE98;
+
+                if (GPLAuto < json[a].GPLAuto)
+                    GPLAuto = json[a].GPLAuto;
+
+            }
+
+            return "[{\"GasoleoS\":" + GasoleoE + ",\"GasoleoE\":" + GasoleoE + ",\"GasolinaS95\":" + GasolinaS95
+                    + ",\"GasolinaE95\":" + GasolinaE95 + ",\"Gasolina98\":" + Gasolina98 + ",\"GasolinaE98\":"
+                    + GasolinaE98 + ",\"GPLAuto\":" + GPLAuto + "}]";
+        } catch (Exception ex) {
+            System.out.println("Erro: " + ex.getMessage());
+        }
+        return "";
+    }
+
+    @GetMapping(path = "/localizacao/{lat}/{loc}/bombas/max", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String Min(@PathVariable("lat") float latitude, @PathVariable("loc") float longitude) {
+
+        String s = BombasClose(latitude, longitude);
+        try {
+            Bombas[] json = new Gson().fromJson(s, Bombas[].class);
+            int len = json.length;
+
+            float GasoleoS = 0.0f;
+            float GasoleoE = 0.0f;
+            float GasolinaS95 = 0.0f;
+            float GasolinaE95 = 0.0f;
+            float Gasolina98 = 0.0f;
+            float GasolinaE98 = 0.0f;
+            float GPLAuto = 0.0f;
+
+            // String aaa = (String) json.get(1).toString();
+
+            // GasoleoS += (((JsonValue) json.get(a)).get("GasoleoS").getAsFloat());
+            for (int a = 0; a < len; a++) {
+                if (GasoleoS > json[a].GasoleoS)
+                    GasoleoS = json[a].GasoleoS;
+                    
+                if (GasoleoE > json[a].GasoleoE)
+                    GasoleoE = json[a].GasoleoE;
+
+                if (GasolinaS95 > json[a].GasolinaS95)
+                    GasolinaS95 = json[a].GasolinaS95;
+
+                if (GasolinaE95 > json[a].GasolinaE95)
+                    GasolinaE95 = json[a].GasolinaE95;
+
+                if (Gasolina98 > json[a].Gasolina98)
+                    Gasolina98 = json[a].Gasolina98;
+
+                if (GasolinaE98 > json[a].GasolinaE98)
+                    GasolinaE98 = json[a].GasolinaE98;
+
+                if (GPLAuto > json[a].GPLAuto)
+                    GPLAuto = json[a].GPLAuto;
+
+            }
+
+            return "[{\"GasoleoS\":" + GasoleoE + ",\"GasoleoE\":" + GasoleoE + ",\"GasolinaS95\":" + GasolinaS95
+                    + ",\"GasolinaE95\":" + GasolinaE95 + ",\"Gasolina98\":" + Gasolina98 + ",\"GasolinaE98\":"
+                    + GasolinaE98 + ",\"GPLAuto\":" + GPLAuto + "}]";
+        } catch (Exception ex) {
+            System.out.println("Erro: " + ex.getMessage());
+        }
+        return "";
     }
 }
