@@ -13,7 +13,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         prefs = getSharedPreferences("CarTrackApp", MODE_PRIVATE);
-        if (!prefs.getBoolean("firstrun", false)) {
+        if (prefs.getBoolean("firstrun", false)) {
             Intent s = new Intent(WelcomeActivity.this, LoginActivity.class);
             s.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(s);
@@ -26,7 +26,7 @@ public class WelcomeActivity extends AppCompatActivity {
     SharedPreferences prefs = null;
 
     private void background_doWork() {
-        prefs.edit().putBoolean("firstrun", false).commit();
+        prefs.edit().putBoolean("firstrun", true).commit();
         (findViewById(R.id.btnRegistWelAct)).setOnClickListener(this::Onclick);
         (findViewById(R.id.btnLoginWelAct)).setOnClickListener(this::Onclick);
     }

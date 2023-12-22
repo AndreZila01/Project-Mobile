@@ -66,6 +66,10 @@
             android:theme="@style/Theme.CarTrackApp" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
