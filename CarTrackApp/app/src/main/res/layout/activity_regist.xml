@@ -15,14 +15,110 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <LinearLayout
+        android:id="@+id/pnlUsername"
         android:layout_width="363dp"
         android:layout_height="45dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="120dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/some_id_if_needed">
+
+        <TextView
+            android:id="@+id/lblUser"
+            android:layout_width="4dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lblUsername"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/txtUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textAlignment="center"
+            android:hint="@string/lblUsername"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pnlName"
+        android:layout_width="363dp"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pnlUsername">
+
+        <TextView
+            android:id="@+id/lblName"
+            android:layout_width="4dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="-10dp"
+            android:text="@string/lblName"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textAlignment="center"
+            android:hint="@string/lblName"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="363dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/pnlName">
+
+        <TextView
+            android:id="@+id/lblEmail"
+            android:layout_width="4dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/lblEmail"
+            android:text="@string/lblEmail"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:ems="10"
+            android:hint="@string/lblEmail"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="363dp"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
             android:id="@+id/lblConfEmail"
@@ -39,6 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAlignment="center"
             android:ems="10"
             android:hint="@string/lblConfEmail"
             android:inputType="text"
@@ -46,46 +143,15 @@
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout4"
         android:layout_width="363dp"
         android:layout_height="45dp"
-        android:layout_marginTop="300dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/lblConfPass"
-            android:layout_width="4dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
-            android:layout_weight="1"
-            android:hint="@string/lblConfEmail"
-            android:text="@string/lblConfPassword"
-            android:textAlignment="center" />
-
-        <EditText
-            android:id="@+id/txtConfPass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/lblConfPassword"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            tools:ignore="TouchTargetSizeCheck" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="363dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="256dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TextView
             android:id="@+id/lblPass"
@@ -102,71 +168,79 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAlignment="center"
             android:ems="10"
-            android:inputType="textPassword"
             android:hint="@string/lblPassword"
+            android:inputType="textPassword"
             android:minHeight="48dp"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="363dp"
         android:layout_height="45dp"
-        android:layout_marginTop="168dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <TextView
-            android:id="@+id/lblEmail"
+            android:id="@+id/lblConfPass"
             android:layout_width="4dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
             android:layout_weight="1"
-            android:hint="@string/lblEmail"
-            android:text="@string/lblEmail"
+            android:hint="@string/lblConfEmail"
+            android:text="@string/lblConfPassword"
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/txtEmail"
+            android:id="@+id/txtConfPass"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/lblEmail"
-            android:inputType="text"
+            android:hint="@string/lblConfPassword"
+            android:inputType="textPassword"
             android:minHeight="48dp"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
-
     <LinearLayout
+        android:id="@+id/pnlNascimento"
         android:layout_width="363dp"
         android:layout_height="45dp"
-        android:layout_marginTop="124dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
-            android:id="@+id/lblUser"
+            android:id="@+id/lblNasc"
             android:layout_width="4dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
             android:layout_weight="1"
-            android:text="@string/lblUsername" />
+            android:text="@string/lblNascimento"
+            android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/txtUsername"
+            android:id="@+id/txtNasc"
+            android:focusable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/lblUsername"
-            android:inputType="text"
+            android:textAlignment="center"
+            android:hint="@string/lblNascimento"
+            android:inputType="textPassword"
             android:minHeight="48dp"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
+
+
 
     <Button
         android:id="@+id/btnRegist"
@@ -176,7 +250,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/pnlNascimento" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

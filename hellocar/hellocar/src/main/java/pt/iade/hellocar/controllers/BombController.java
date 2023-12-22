@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.mysql.cj.xdevapi.JsonArray;
 
-import pt.iade.hellocar.models.ClassBombas.Bombas;
+import pt.iade.hellocar.models.ClassBombas;
+
 
 @RestController
 @RequestMapping(path = "/bomb")
@@ -86,6 +87,7 @@ public class BombController {
                         "application/x-www-form-urlencoded");
 
                 connection.setRequestProperty("Content-Language", "en-US");
+                connection.setRequestProperty("content-type", "application/json;  charset=utf-8");
 
                 connection.setUseCaches(false);
                 connection.setDoOutput(true);
@@ -106,56 +108,42 @@ public class BombController {
                 bombas = response.toString().split("<main>")[1].split("</div></div></div> </a> <a ");
                 int values = 0;
 
-                ArrayList<Bombas> lstbomb = new ArrayList<Bombas>();
+                ArrayList<ClassBombas> lstbomb = new ArrayList<ClassBombas>();
                 for (String string : bombas) {
-                    Bombas bb = new Bombas();
+                    ClassBombas bb = new ClassBombas();
                     values++;
                     json += "{\"id\":" + values;
                     urls = new URL(string.split("href=\"")[1].split("\"")[0].toString());
 
                     json += ",\"NomeBomba\":\""
                             + string.split("<div class=\"simg ")[1].split("></div>")[1].split("</div>")[0] + "\"";
-                    if (string.contains("simg-f5\"></div><span>â‚¬ "))
+                    if (string.contains("simg-f5\"></div><span>€ "))
                         json += ",\"GasoleoS\":"
-                                + Float.parseFloat(string.split("simg-f5\"></div><span>â‚¬ ")[1].split("</span>")[0]);
-                    else
-                        bb.GasoleoS = 0.0f;
+                                + Float.parseFloat(string.split("simg-f5\"></div><span>€ ")[1].split("</span>")[0]);
 
-                    if (string.contains("simg-f4\"></div><span>â‚¬ "))
+                    if (string.contains("simg-f4\"></div><span>€ "))
                         json += ",\"GasoleoE\":"
-                                + Float.parseFloat(string.split("simg-f4\"></div><span>â‚¬ ")[1].split("</span>")[0]);
-                    else
-                        bb.GasoleoE = 0.0f;
+                                + Float.parseFloat(string.split("simg-f4\"></div><span>€ ")[1].split("</span>")[0]);
 
-                    if (string.contains("simg-f10\"></div><span>â‚¬ "))
+                    if (string.contains("simg-f10\"></div><span>€ "))
                         json += ",\"GasolinaS95\":" + Float
-                                .parseFloat(string.split("simg-f10\"></div><span>â‚¬ ")[1].split("</span>")[0]);
-                    else
-                        bb.GasolinaS95 = 0.0f;
+                                .parseFloat(string.split("simg-f10\"></div><span>€ ")[1].split("</span>")[0]);
 
-                    if (string.contains("simg-f8\"></div><span>â‚¬ "))
+                    if (string.contains("simg-f8\"></div><span>€ "))
                         json += ",\"GasolinaE95\":" + Float
-                                .parseFloat(string.split("simg-f8\"></div><span>â‚¬ ")[1].split("</span>")[0]);
-                    else
-                        bb.GasolinaE95 = 0.0f;
+                                .parseFloat(string.split("simg-f8\"></div><span>€ ")[1].split("</span>")[0]);
 
-                    if (string.contains("simg-f6\"></div><span>â‚¬ "))
+                    if (string.contains("simg-f6\"></div><span>€ "))
                         json += ",\"Gasolina98\":" + Float
-                                .parseFloat(string.split("simg-f6\"></div><span>â‚¬ ")[1].split("</span>")[0]);
-                    else
-                        bb.Gasolina98 = 0.0f;
+                                .parseFloat(string.split("simg-f6\"></div><span>€ ")[1].split("</span>")[0]);
 
-                    if (string.contains("simg-f9\"></div><span>â‚¬ "))
+                    if (string.contains("simg-f9\"></div><span>€ "))
                         json += ",\"GasolinaE98\":" + Float
-                                .parseFloat(string.split("simg-f9\"></div><span>â‚¬ ")[1].split("</span>")[0]);
-                    else
-                        bb.GasolinaE98 = 0.0f;
+                                .parseFloat(string.split("simg-f9\"></div><span>€ ")[1].split("</span>")[0]);
 
-                    if (string.contains("simg-f14\"></div><span>â‚¬ "))
+                    if (string.contains("simg-f14\"></div><span>€ "))
                         json += ",\"GPLAuto\":"
-                                + Float.parseFloat(string.split("simg-f14\"></div><span>â‚¬ ")[1].split("</span>")[0]);
-                    else
-                        bb.GPLAuto = 0.0f;
+                                + Float.parseFloat(string.split("simg-f14\"></div><span>€ ")[1].split("</span>")[0]);
 
                     try {
                         HttpURLConnection connections = null;
@@ -208,7 +196,7 @@ public class BombController {
 
         String s = BombasClose(latitude, longitude);
         try {
-            Bombas[] json = new Gson().fromJson(s, Bombas[].class);
+            ClassBombas[] json = new Gson().fromJson(s, ClassBombas[].class);
             int len = json.length;
 
             float GasoleoS = 0.0f;
@@ -223,13 +211,13 @@ public class BombController {
 
             // GasoleoS += (((JsonValue) json.get(a)).get("GasoleoS").getAsFloat());
             for (int a = 0; a < len; a++) {
-                GasoleoS += json[a].GasoleoS;
-                GasoleoE += json[a].GasoleoE;
-                GasolinaS95 += json[a].GasolinaS95;
-                GasolinaE95 += json[a].GasolinaE95;
-                Gasolina98 += json[a].Gasolina98;
-                GasolinaE98 += json[a].GasolinaE98;
-                GPLAuto += json[a].GPLAuto;
+                GasoleoS += json[a].geteoS();
+                GasoleoE += json[a].geteoE();
+                GasolinaS95 += json[a].getiNAs95();
+                GasolinaE95 += json[a].getiNAe95();
+                Gasolina98 += json[a].getiNA98();
+                GasolinaE98 += json[a].getinaE98();
+                GPLAuto += json[a].getGPL();
             }
 
             GasoleoS = (GasoleoS / len);
@@ -253,7 +241,7 @@ public class BombController {
 
         String s = BombasClose(latitude, longitude);
         try {
-            Bombas[] json = new Gson().fromJson(s, Bombas[].class);
+            ClassBombas[] json = new Gson().fromJson(s, ClassBombas[].class);
             int len = json.length;
 
             float GasoleoS = 0.0f;
@@ -268,26 +256,26 @@ public class BombController {
 
             // GasoleoS += (((JsonValue) json.get(a)).get("GasoleoS").getAsFloat());
             for (int a = 0; a < len; a++) {
-                if (GasoleoS < json[a].GasoleoS)
-                    GasoleoS = json[a].GasoleoS;
+                if (GasoleoS < json[a].geteoS())
+                    GasoleoS = json[a].geteoS();
 
-                if (GasoleoE < json[a].GasoleoE)
-                    GasoleoE = json[a].GasoleoE;
+                if (GasoleoE < json[a].geteoE())
+                    GasoleoE = json[a].geteoE();
 
-                if (GasolinaS95 < json[a].GasolinaS95)
-                    GasolinaS95 = json[a].GasolinaS95;
+                if (GasolinaS95 < json[a].getiNAs95())
+                    GasolinaS95 = json[a].getiNAs95();
 
-                if (GasolinaE95 < json[a].GasolinaE95)
-                    GasolinaE95 = json[a].GasolinaE95;
+                if (GasolinaE95 < json[a].getiNAe95())
+                    GasolinaE95 = json[a].getiNAe95();
 
-                if (Gasolina98 < json[a].Gasolina98)
-                    Gasolina98 = json[a].Gasolina98;
+                if (Gasolina98 < json[a].getiNA98())
+                    Gasolina98 = json[a].getiNA98();
 
-                if (GasolinaE98 < json[a].GasolinaE98)
-                    GasolinaE98 = json[a].GasolinaE98;
+                if (GasolinaE98 < json[a].getinaE98())
+                    GasolinaE98 = json[a].getinaE98();
 
-                if (GPLAuto < json[a].GPLAuto)
-                    GPLAuto = json[a].GPLAuto;
+                if (GPLAuto < json[a].getGPL())
+                    GPLAuto = json[a].getGPL();
 
             }
 
@@ -300,12 +288,12 @@ public class BombController {
         return "";
     }
 
-    @GetMapping(path = "/localizacao/{lat}/{loc}/bombas/max", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/localizacao/{lat}/{loc}/bombas/min", produces = MediaType.APPLICATION_JSON_VALUE)
     public String Min(@PathVariable("lat") float latitude, @PathVariable("loc") float longitude) {
 
         String s = BombasClose(latitude, longitude);
         try {
-            Bombas[] json = new Gson().fromJson(s, Bombas[].class);
+            ClassBombas[] json = new Gson().fromJson(s, ClassBombas[].class);
             int len = json.length;
 
             float GasoleoS = 0.0f;
@@ -320,26 +308,26 @@ public class BombController {
 
             // GasoleoS += (((JsonValue) json.get(a)).get("GasoleoS").getAsFloat());
             for (int a = 0; a < len; a++) {
-                if (GasoleoS > json[a].GasoleoS)
-                    GasoleoS = json[a].GasoleoS;
-                    
-                if (GasoleoE > json[a].GasoleoE)
-                    GasoleoE = json[a].GasoleoE;
+                if (GasoleoS > json[a].geteoS())
+                    GasoleoS = json[a].geteoS();
 
-                if (GasolinaS95 > json[a].GasolinaS95)
-                    GasolinaS95 = json[a].GasolinaS95;
+                if (GasoleoE > json[a].geteoE())
+                    GasoleoE = json[a].geteoE();
 
-                if (GasolinaE95 > json[a].GasolinaE95)
-                    GasolinaE95 = json[a].GasolinaE95;
+                if (GasolinaS95 > json[a].getiNAs95())
+                    GasolinaS95 = json[a].getiNAs95();
 
-                if (Gasolina98 > json[a].Gasolina98)
-                    Gasolina98 = json[a].Gasolina98;
+                if (GasolinaE95 > json[a].getiNAe95())
+                    GasolinaE95 = json[a].getiNAe95();
 
-                if (GasolinaE98 > json[a].GasolinaE98)
-                    GasolinaE98 = json[a].GasolinaE98;
+                if (Gasolina98 > json[a].getiNA98())
+                    Gasolina98 = json[a].getiNA98();
 
-                if (GPLAuto > json[a].GPLAuto)
-                    GPLAuto = json[a].GPLAuto;
+                if (GasolinaE98 > json[a].getinaE98())
+                    GasolinaE98 = json[a].getinaE98();
+
+                if (GPLAuto > json[a].getGPL())
+                    GPLAuto = json[a].getGPL();
 
             }
 

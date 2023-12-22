@@ -23,6 +23,7 @@
     <string name="lblKm">Km feitos: </string>
     <string name="lbllastLoc">Ultima Localização: </string>
     <string name="lblMatri">Matricula: </string>
+    <string name="lblName">Nome e Apelido </string>
     <string name="lblSettings">Settings</string>
     <string name="lblLogOut">LogOut</string>
     <string name="btnAdicionarCar">Adicionar Carro</string>
@@ -33,6 +34,7 @@
     <string name="txtConsumo">Adicionar Carro</string>
     <string name="txtKm">meter os kilometros</string>
     <string name="btnRegist">Registar Conta</string>
+    <string name="lblNascimento">Data de Nascimento</string>
 
     <string-array name="Consumo">
         <item>Eletrico</item>

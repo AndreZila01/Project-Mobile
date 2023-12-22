@@ -1,4 +1,5 @@
-Create table TrackCar;
+-- Create table TrackCar;
+CREATE SCHEMA `trackcar`;
 
 Create table tblConsumo(
     idConsumo int primary key not null auto_increment, -- Id da tabela consumo
@@ -50,12 +51,12 @@ Create table tblInspecoes(
 );
 
 Create table tblInsCar(
-    idInsCar int primary key not null auto_increment, -- id da InsCar
-    idCar int not null, -- id do Carro que está ligado ao tblCar
-    idInspecao int not null, -- id da Inspecao que está ligado ao tblInspecções
+    idInsCar int primary key not null auto_increment, 
+    idCar int not null, 
+    idInspecao int not null, 
 
     foreign key(idCar) references tblCar(idCar),
-    foreign key(idInspecao) references tblInspecoes(idInspecao),
+    foreign key(idInspecao) references tblInspecoes(idInspecao)
 );
 
 Create table tblLogin(
@@ -94,6 +95,9 @@ Create table tblClient(
     foreign Key (idLogin) references tblLogin(idLogin)
 );
 
+
+
+
 Create table tbldetalhesCarro(
     idDetalhesCarro int primary key not null auto_increment, -- id Detalhes Carro
     idCar int, -- id do Carro ligado a tblCar
@@ -101,10 +105,9 @@ Create table tbldetalhesCarro(
     idMulta int, -- id da Multa ligado a tblMulta
     
     foreign key (idCar) references tblCar(idCar),
-    foreign key (idClient) references tblClient(idClient),
-    --foreign key (idMulta) references tblMulta(idMulta)
-    foreign key (idMulta) references tbldetalhesCarro(idMulta)
-
+    foreign key (idClient) references tblClient(idClient)
+    -- foreign key (idMulta) references tblMulta(idMulta)
+    -- foreign key (idMulta) references tblCarroMultas(idCarrosMultas)
 );
 
 Create table tblCarrosMultas(
@@ -116,34 +119,35 @@ Create table tblCarrosMultas(
     foreign key (idMulta) references tblMulta(idMulta)
 );
 
-insert table tblLogin(Username, Password) values('admin', 'admin')
-insert table tblClient(FirstName, LastName, idLogin, DataNascimento, Email) values('Andre', 'Cust', 1, '2023-12-14', 'admin@gmail.com')
 
-insert table tblConsumo(Consumo) values('eletrico')
-insert table tblConsumo(Consumo) values('gasoleo')
-insert table tblConsumo(Consumo) values('gasolina')
-insert table tblConsumo(Consumo) values('GPL')
-insert table tblConsumo(Consumo) values('Hibrido')
+insert into tblLogin(Username, Password) values('admin', 'admin')
+insert into tblClient(FirstName, LastName, idLogin, DataNascimento, Email) values('Andre', 'Cust', 1, '2023-12-14', 'admin@gmail.com')
 
-insert table tblCar(MatriculaCarro, Modelo, MesAno, CV, Consumo, KmFeitos) values('AE-58-FD', 'Fiat 500', '23/11', 250, 1, 150.23)
+insert into tblConsumo(Consumo) values('eletrico')
+insert into tblConsumo(Consumo) values('gasoleo')
+insert into tblConsumo(Consumo) values('gasolina')
+insert into tblConsumo(Consumo) values('GPL')
+insert into tblConsumo(Consumo) values('Hibrido')
 
-insert table tblDCentroDeInspecao(Nome, Morada, Telefone, Email, ChefeDoCentro) values('Mecanica', '...', '+351912333222', 'mecanicos@gmail.com', 'Pedro')
+insert into tblCar(MatriculaCarro, Modelo, MesAno, CV, Consumo, KmFeitos) values('AE-58-FD', 'Fiat 500', '23/11', 250, 1, 150.23)
 
-insert table tblEstado(Estado, MensagemdoEstado) values('Reprovado v1', 'Motor em baixo')
-insert table tblEstado(Estado, MensagemdoEstado) values('Reprovado v2', 'Sem luzes em baixo')
-insert table tblEstado(Estado, MensagemdoEstado) values('Reprovado v3', 'Bateria em baixo')
-insert table tblEstado(Estado, MensagemdoEstado) values('Aprovado v1', 'Com problemas nos maximos')
+insert into tblDCentroDeInspecao(Nome, Morada, Telefone, Email, ChefeDoCentro) values('Mecanica', '...', '+351912333222', 'mecanicos@gmail.com', 'Pedro')
 
-insert table tblInspecoes(DataHora, CentroDeInspecao, idEstado, Reprovado) values('2023-12-14 5:00', 1, 4, False)
+insert into tblEstado(Estado, MensagemdoEstado) values('Reprovado v1', 'Motor em baixo')
+insert into tblEstado(Estado, MensagemdoEstado) values('Reprovado v2', 'Sem luzes em baixo')
+insert into tblEstado(Estado, MensagemdoEstado) values('Reprovado v3', 'Bateria em baixo')
+insert into tblEstado(Estado, MensagemdoEstado) values('Aprovado v1', 'Com problemas nos maximos')
 
-insert table tblInsCar(idCar, idInspecao) values(1,1)
+insert into tblInspecoes(DataHora, CentroDeInspecao, idEstado, Reprovado) values('2023-12-14 5:00', 1, 4, False)
 
-insert table tblMetodoDePagament(Meotod) values('dinhiro')
-insert table tblMetodoDePagament(Meotod) values('cartao de credito')
-insert table tblMetodoDePagament(Meotod) values('cartao de debito')
-insert table tblMetodoDePagament(Meotod) values('cheque')
-insert table tblMetodoDePagament(Meotod) values('dinheiro e cartao de credito')
+insert into tblInsCar(idCar, idInspecao) values(1,1)
 
-insert table tblMulta(ValorMulta, Descricao, idMetodo, Pago, DataHoraMultado, DataHoraPagamento) values(15.99, 'Excesso de velocidade, num local de 50km/h', 1, True, '2023-12-14 18:00', '2023-12-01 10:00')
+insert into tblMetodoDePagament(Meotod) values('dinhiro')
+insert into tblMetodoDePagament(Meotod) values('cartao de credito')
+insert into tblMetodoDePagament(Meotod) values('cartao de debito')
+insert into tblMetodoDePagament(Meotod) values('cheque')
+insert into tblMetodoDePagament(Meotod) values('dinheiro e cartao de credito')
 
-insert table tbldetalhesCarro(idCar, idClient, idMulta) values(1, 1, 1)
+insert into tblMulta(ValorMulta, Descricao, idMetodo, Pago, DataHoraMultado, DataHoraPagamento) values(15.99, 'Excesso de velocidade, num local de 50km/h', 1, True, '2023-12-14 18:00', '2023-12-01 10:00')
+
+insert into tbldetalhesCarro(idCar, idClient, idMulta) values(1, 1, 1)

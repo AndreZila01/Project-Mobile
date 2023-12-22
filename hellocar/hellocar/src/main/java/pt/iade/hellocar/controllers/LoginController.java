@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.mysql.cj.xdevapi.JsonArray;
 import com.mysql.cj.xdevapi.JsonValue;
 
 import pt.iade.hellocar.models.ClassBombas;
-import pt.iade.hellocar.models.ClassBombas.Bombas;
+import pt.iade.hellocar.models.ClassLogin;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -38,16 +40,50 @@ import java.util.ArrayList;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping(path = "/car/s")
+@RequestMapping(path = "/Account")
 public class LoginController {
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getGreeting() {
+    @PostMapping(path = "/Login", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String Login(@RequestBody String body) {
+        logger.info("Saying Hello to the world");
+
+        String url = "jdbc:mysql://localhost:3306/trackcar";
+        String user = "root";
+        String pass = "admin";
+        // You don't need a username and password for integrated security
+
+        ClassLogin as = new ClassLogin();
+
+        try {
+
+            JsonObject jsonObject = new Gson().fromJson(body, JsonObject.class);
+
+            // Now you can access values from the JsonObject
+            String password = jsonObject.get("password").getAsString();
+            String username = jsonObject.get("username").getAsString();
+
+            Connection connection = DriverManager.getConnection(url, user, pass);
+            var st = connection.createStatement();
+            ResultSet rs = st.executeQuery("SELECT Username, Password FROM trackcar.tbllogin where Username='"
+                    + username + "' and Password='" + password + "'");
+
+            System.out.println("Database connected!");
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+
+        return "Hello World";
+    }
+
+    @GetMapping(path = "/Create", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String RegistNewAccount() {
         logger.info("Saying Hello to the world");
 
         String url = "jdbc:mysql://localhost:3306/trackcar";
