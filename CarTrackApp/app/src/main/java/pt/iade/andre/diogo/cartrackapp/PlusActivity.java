@@ -71,7 +71,7 @@ public class PlusActivity extends AppCompatActivity {
                     timepick.setTitle("select time");
                     timepick.show();
                 }
-            } ,year,month,day);
+            }, year, month, day);
             datepick.setTitle("select date");
             datepick.show();
             Log.d("", "");
