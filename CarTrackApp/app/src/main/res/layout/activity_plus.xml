@@ -14,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--Botões-->
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="413dp"
@@ -23,12 +24,13 @@
         tools:layout_editor_absoluteX="-2dp">
 
         <Button
+            android:textSize="13dp"
             android:id="@+id/btnAddCar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="42dp"
-            android:layout_marginEnd="42dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:layout_toStartOf="@+id/btnAddCoime"
             android:layout_toEndOf="@+id/btnAddInspction"
@@ -42,7 +44,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
-            android:text="Button" />
+            android:text="@string/btnAddMulta" />
 
         <Button
             android:id="@+id/btnAddInspction"
@@ -52,8 +54,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="5dp"
-            android:text="Button" />
+            android:text="@string/btnAddInspecao" />
     </RelativeLayout>
+
+    <!--Adicionar Carro-->
 
     <RelativeLayout
         android:id="@+id/pnlNewCar"
@@ -61,8 +65,8 @@
         android:layout_height="595dp"
         android:layout_below="@id/relativeLayout2"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout2"
         tools:layout_editor_absoluteX="1dp">
 
         <LinearLayout
@@ -70,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/lblPlusModelo"
@@ -94,7 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/pnlModelo"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/lblPlusMatricula"
@@ -102,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/lblMatri"
 
-                 />
+                />
 
             <EditText
                 android:id="@+id/txtPlusMatricula"
@@ -119,7 +125,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/pnlMatricula"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/lblPlusCilindrada"
@@ -143,7 +150,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/pnlCilindrada"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/lblPlusAnoMes"
@@ -162,6 +170,8 @@
                 android:ems="10"
                 android:inputType="text"
                 android:editable="false"
+                android:focusable="false"
+
                 android:hint="Name" />
         </LinearLayout>
 
@@ -170,7 +180,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/pnlAnoMes"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/lblConsumo"
@@ -193,7 +204,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/pnlConsumo"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/lblPlusKm"
@@ -211,30 +223,206 @@
                 android:inputType="text"
                 android:hint="Name" />
         </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/pnlNewCoime"
-            android:layout_width="match_parent"
-            android:layout_height="595dp"
-            android:layout_below="@id/relativeLayout2"
-            android:layout_marginTop="23dp"
-            tools:visibility="invisible">
-
-        </RelativeLayout>
-
-
     </RelativeLayout>
 
+
+    <!--Adicionar Inspecção-->
     <RelativeLayout
         android:id="@+id/pnlNewInspection"
         android:layout_width="match_parent"
         android:layout_height="595dp"
+        android:layout_margin="10dp"
         android:layout_below="@id/relativeLayout2"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:visibility="invisible"
+        android:visibility="invisible"
+
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
         tools:layout_editor_absoluteX="1dp">
 
+        <LinearLayout
+            android:id="@+id/pnlNomeInspecao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblNomeInspecao"
+                android:layout_width="10dp"
+                android:layout_marginTop="-5dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:text="@string/lblNomeInspecao" />
+
+            <Spinner
+                android:id="@+id/spnCentroDeInspecao"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                android:drawSelectorOnTop="true"
+                android:entries="@array/Consumo"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/pnlInspDataHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pnlNomeInspecao"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblInspDataHora"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="-5dp"
+                android:textAlignment="center"
+                android:text="@string/lblDataEHoraInspecao" />
+
+            <EditText
+                android:id="@+id/txtInspDataHora"
+                android:layout_width="wrap_content"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pnlCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pnlInspDataHora"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblCar"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-5dp"
+                android:layout_weight="1"
+                android:text="@string/lblCarInspecao"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/spnCarro"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                android:drawSelectorOnTop="true"
+                android:entries="@array/Consumo"
+                />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <!--Adicionar Coima-->
+    <RelativeLayout
+        android:id="@+id/pnlNewCoima"
+        android:layout_width="match_parent"
+        android:layout_height="595dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/relativeLayout2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="invisible"
+
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+        tools:layout_editor_absoluteX="1dp">
+
+        <LinearLayout
+            android:id="@+id/pnlValorMulta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblValorMulta"
+                android:layout_width="10dp"
+                android:layout_marginTop="-5dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:text="@string/lblValorMulta" />
+
+            <EditText
+                android:id="@+id/txtValorMulta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pnlDataHoraMulta"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/pnlValorMulta"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/lblDataHora"
+                android:layout_width="10dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="@string/lblDataEHoraMulta" />
+
+            <EditText
+                android:id="@+id/txtDataHoraMulta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Name" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/pnlDetalhes"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/pnlDataHoraMulta"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/lblDetalhesMulta"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="@string/lblDataEHoraMulta" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/pnlDetalhes1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pnlDetalhes"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+            <EditText
+                android:id="@+id/txtDetalhesMulta"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Name" />
+
+        </LinearLayout>
     </RelativeLayout>
 
 
@@ -242,6 +430,8 @@
         android:id="@+id/btnSaveAddValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="@string/btnSave"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent"

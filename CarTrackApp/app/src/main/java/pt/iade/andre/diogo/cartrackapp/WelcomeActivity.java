@@ -10,17 +10,19 @@ import androidx.appcompat.app.AppCompatActivity;
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle bundle){
 
+        super.onCreate(bundle);
         prefs = getSharedPreferences("CarTrackApp", MODE_PRIVATE);
         if (prefs.getBoolean("firstrun", false)) {
             Intent s = new Intent(WelcomeActivity.this, LoginActivity.class);
             s.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(s);
         }
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcomecartrack);
-        background_doWork();
+        else {
+            setContentView(R.layout.activity_welcomecartrack);
+            background_doWork();
+        }
     }
 
     SharedPreferences prefs = null;

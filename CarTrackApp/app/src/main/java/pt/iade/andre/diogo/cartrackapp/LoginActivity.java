@@ -52,5 +52,14 @@ public class LoginActivity extends AppCompatActivity {
                     new AlertDialog.Builder(LoginActivity.this).setTitle("Campos em Falta!").setMessage("Os campos acima, não podem estar vazios!!").setPositiveButton(android.R.string.ok, null).setIcon(android.R.drawable.ic_dialog_alert).show();
             }
         });
+
+        findViewById(R.id.textView2).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, AjudaActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
     }
 }

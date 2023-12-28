@@ -2,11 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -36,14 +40,6 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.CarTrackApp" />
         <activity
-            android:name=".MenuLoginRegist"
-            android:exported="true"
-            android:theme="@style/Theme.CarTrackApp" />
-        <activity
-            android:name=".MenuLogRegActivity"
-            android:exported="true"
-            android:theme="@style/Theme.CarTrackApp" />
-        <activity
             android:name=".NoticiasActivity"
             android:exported="true"
             android:theme="@style/Theme.CarTrackApp" />
@@ -58,6 +54,10 @@
         <activity
             android:name=".PlusActivity"
             android:exported="true"
+            android:theme="@style/Theme.CarTrackApp" />
+        <activity
+            android:name=".AjudaActivity"
+            android:exported="false"
             android:theme="@style/Theme.CarTrackApp" />
         <activity
             android:name=".ProfileActivity"

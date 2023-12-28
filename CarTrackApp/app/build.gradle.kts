@@ -50,6 +50,7 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
     implementation("androidx.media3:media3-common:1.2.0")
     testImplementation("junit:junit:4.13.2")
+    implementation("com.mikhaellopez:circularimageview:4.3.1")
     implementation("com.squareup.okhttp3:okhttp:4.8.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

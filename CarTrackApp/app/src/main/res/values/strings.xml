@@ -5,6 +5,11 @@
     <string name="menu_close">Fechado</string>
     <string name="lblUsernameEmail">Username ou Email</string>
     <string name="lblUsername">Username</string>
+    <string name="lblEmailEquipaTecnica">Email do Suporte: </string>
+    <string name="lblEquipaTecnica">Email do Suporte </string>
+    <string name="lblTeEquipaTecnica">Telemovel do Suporte </string>
+    <string name="btnSave">Guardar </string>
+    <string name="lblTelemovelEquipaTecnica">Telemovel do Suporte </string>
     <string name="lblEmail">Email</string>
     <string name="lblConfEmail">Confirmar Email</string>
     <string name="lblPassword">Password</string>
@@ -27,14 +32,24 @@
     <string name="lblSettings">Settings</string>
     <string name="lblLogOut">LogOut</string>
     <string name="btnAdicionarCar">Adicionar Carro</string>
-    <string name="txtMatricula">Adicionar Carro</string>
-    <string name="txtModelo">Adicionar Carro</string>
-    <string name="txtCilindrada">Adicionar Carro</string>
-    <string name="txtAnoMes">Adicionar Carro</string>
-    <string name="txtConsumo">Adicionar Carro</string>
+    <string name="txtMatricula">Adicionar Matricula</string>
+    <string name="txtModelo">Adicionar Modelo</string>
+    <string name="txtCilindrada">Adicionar Cilindrada</string>
+    <string name="txtAnoMes">Adicionar AnoMes</string>
+    <string name="txtConsumo">Adicionar Consumo</string>
     <string name="txtKm">meter os kilometros</string>
     <string name="btnRegist">Registar Conta</string>
     <string name="lblNascimento">Data de Nascimento</string>
+    <string name="btnAddInspecao">Adicionar\nInspecção</string>
+    <string name="btnAddMulta">Adicionar\nMulta</string>
+
+
+    <string name="lblNomeInspecao">Centro\n de Inspeção</string>
+    <string name="lblDataEHoraInspecao">Data e Hora\nda Inspeção</string>
+    <string name="lblCarInspecao">Carro\nda Inspeção</string>
+    <string name="lblValorMulta">Valor\nda Multa</string>
+    <string name="lblDataEHoraMulta">Data e Hora\nda Multa</string>
+    <string name="lblDetalhesDaMulta">Detalhes \nda Multa</string>
 
     <string-array name="Consumo">
         <item>Eletrico</item>
