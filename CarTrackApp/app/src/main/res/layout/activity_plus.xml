@@ -63,6 +63,7 @@
         android:id="@+id/pnlNewCar"
         android:layout_width="match_parent"
         android:layout_height="595dp"
+        android:layout_margin="10dp"
         android:layout_below="@id/relativeLayout2"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="invisible"
@@ -91,7 +92,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Name" />
+                android:textAlignment="center"
+                android:hint="@string/lblModelo" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +106,7 @@
 
             <TextView
                 android:id="@+id/lblPlusMatricula"
-                android:layout_width="106dp"
+                android:layout_width="96dp"
                 android:layout_height="wrap_content"
                 android:text="@string/lblMatri"
 
@@ -117,7 +119,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Name" />
+                android:textAlignment="center"
+                android:hint="@string/lblMatri" />
         </LinearLayout>
 
         <LinearLayout
@@ -142,7 +145,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Name" />
+                android:textAlignment="center"
+                android:hint="@string/lblCilindrada" />
         </LinearLayout>
 
         <LinearLayout
@@ -171,8 +175,8 @@
                 android:inputType="text"
                 android:editable="false"
                 android:focusable="false"
-
-                android:hint="Name" />
+                android:textAlignment="center"
+                android:hint="@string/lblMesAno" />
         </LinearLayout>
 
         <LinearLayout
@@ -185,11 +189,12 @@
 
             <TextView
                 android:id="@+id/lblConsumo"
-                android:layout_width="106dp"
+                android:layout_width="96dp"
                 android:layout_height="wrap_content"
                 android:text="@string/lblConsumo" />
             <Spinner
                 android:id="@+id/spinner1"
+                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/btn_dropdown"
@@ -221,7 +226,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Name" />
+                android:textAlignment="center"
+                android:hint="@string/lblKm" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -289,7 +295,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Name" />
+                android:hint="@string/lblDataEHoraInspecaoHint" />
         </LinearLayout>
 
         <LinearLayout
@@ -330,7 +336,7 @@
         android:layout_margin="10dp"
         android:layout_below="@id/relativeLayout2"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:visibility="invisible"
+        android:visibility="invisible"
 
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
         tools:layout_editor_absoluteX="1dp">
@@ -358,7 +364,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Name" />
+                android:textAlignment="center"
+                android:hint="@string/lblValorMultaHint" />
         </LinearLayout>
 
         <LinearLayout
@@ -382,10 +389,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textAlignment="center"
                 android:layout_marginTop="5dp"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Name" />
+                android:hint="@string/lblDataEHoraMultaHint" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/pnlDetalhes"
@@ -401,7 +409,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="@string/lblDataEHoraMulta" />
+                android:text="@string/lblDetalhesDaMulta" />
 
         </LinearLayout>
         <LinearLayout
@@ -419,8 +427,11 @@
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="Name" />
+                android:maxLength="300"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:textAlignment="center"
+                android:hint="@string/lblModelo" />
 
         </LinearLayout>
     </RelativeLayout>
