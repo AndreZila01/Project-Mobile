@@ -54,6 +54,8 @@ public class PlusActivity extends AppCompatActivity {
         (findViewById(R.id.btnAddCoime)).setOnClickListener(this::onclick);
         (findViewById(R.id.btnSaveAddValue)).setOnClickListener(this::onclick);
         (findViewById(R.id.txtPlusAnoMes)).setOnClickListener(this::onclick);
+        (findViewById(R.id.txtDataHoraMulta)).setOnClickListener(this::onclick);
+        (findViewById(R.id.txtInspDataHora)).setOnClickListener(this::onclick);
 
         findViewById(R.id.BackActivity).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +64,7 @@ public class PlusActivity extends AppCompatActivity {
             }
         });
 
+        // Todas as inspecções
         try {
             String path = "http://10.0.2.2:8080/inspecoes/centros";
 
@@ -86,7 +89,6 @@ public class PlusActivity extends AppCompatActivity {
                             Centro[i] = (myClassList.get(i).getNomeCentro());
 
 
-
                         Spinner s = (Spinner) findViewById(R.id.spnCentroDeInspecao);
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlusActivity.this, android.R.layout.simple_spinner_item, Centro);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,13 +102,15 @@ public class PlusActivity extends AppCompatActivity {
 
         }
 
+        // Fazer um request post com header do id do user
+
     }
 
     private void onclick(View v) {
 
         int s = v.getId();
 
-        if (s == R.id.txtPlusAnoMes) {
+        if (s == R.id.txtPlusAnoMes || s == R.id.txtDataHoraMulta || s == R.id.txtInspDataHora) {
             InputMethodManager imm = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
             //Find the currently focused view, so we can grab the correct window token from it.
 
@@ -127,7 +131,12 @@ public class PlusActivity extends AppCompatActivity {
             DatePickerDialog datepick = new DatePickerDialog(PlusActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    ((TextView) findViewById(R.id.txtPlusAnoMes)).setText(dayOfMonth + "/" + month + "/" + year);
+                    if (s == R.id.txtPlusAnoMes)
+                        ((TextView) findViewById(R.id.txtPlusAnoMes)).setText(dayOfMonth + "/" + month + "/" + year);
+                    if (s == R.id.txtDataHoraMulta)
+                        ((TextView) findViewById(R.id.txtDataHoraMulta)).setText(dayOfMonth + "/" + month + "/" + year);
+                    if (s == R.id.txtInspDataHora)
+                        ((TextView) findViewById(R.id.txtInspDataHora)).setText(dayOfMonth + "/" + month + "/" + year);
                     dateWhatever = new GregorianCalendar(year, month, dayOfMonth);
 
                     TimePickerDialog timepick = new TimePickerDialog(PlusActivity.this, new TimePickerDialog.OnTimeSetListener() {
@@ -136,8 +145,20 @@ public class PlusActivity extends AppCompatActivity {
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                             //rt1.setText(hourOfDay + ":" + minute);
-                            String value = ((TextView) findViewById(R.id.txtPlusAnoMes)).getText().toString();
-                            ((TextView) findViewById(R.id.txtPlusAnoMes)).setText(value + " " + hourOfDay + ":" + minute);
+                            if (s == R.id.txtPlusAnoMes) {
+                                String value = ((TextView) findViewById(R.id.txtPlusAnoMes)).getText().toString();
+                                ((TextView) findViewById(R.id.txtPlusAnoMes)).setText(value + " " + hourOfDay + ":" + minute);
+                            }
+
+                            if (s == R.id.txtDataHoraMulta) {
+                                String value = ((TextView) findViewById(R.id.txtDataHoraMulta)).getText().toString();
+                                ((TextView) findViewById(R.id.txtDataHoraMulta)).setText(value + " " + hourOfDay + ":" + minute);
+                            }
+
+                            if (s == R.id.txtInspDataHora) {
+                                String value = ((TextView) findViewById(R.id.txtInspDataHora)).getText().toString();
+                                ((TextView) findViewById(R.id.txtInspDataHora)).setText(value + " " + hourOfDay + ":" + minute);
+                            }
                             Log.d("", "dada");
 
 
@@ -159,7 +180,7 @@ public class PlusActivity extends AppCompatActivity {
             (findViewById(R.id.pnlNewInspection)).setVisibility(View.INVISIBLE);
 
             if (s == R.id.btnAddCar) {
-                ((EditText) findViewById(R.id.txtPlusAnoMes)).setFocusable(false);
+                ((EditText) findViewById(R.id.txtPlusAnoMes)).setFocusable(false);//TODO: CHECKAR
                 (findViewById(R.id.pnlNewCar)).setVisibility(View.VISIBLE);
             } else if (s == R.id.btnAddInspction) {
                 (findViewById(R.id.pnlNewInspection)).setVisibility(View.VISIBLE);
@@ -182,10 +203,17 @@ public class PlusActivity extends AppCompatActivity {
     private boolean checkValues() {
         if ((findViewById(R.id.pnlNewInspection)).isShown()) {
 
-            //region Checkar se está tudo "ok"
+            //region Checkar se está tudo "ok", Inspecções
+
+            if (((Spinner) findViewById(R.id.spnCentroDeInspecao)).getSelectedItem().toString() == "Sem Dados") {
+                Toast.makeText(getApplicationContext(), "Tem de escolher uma das opções", Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            if (((Spinner) findViewById(R.id.spnCarro)).getSelectedItem().toString() == "Sem Dados") {
 
 
-            //endregion
+                //endregion
         } else if ((findViewById(R.id.pnlNewCar)).isShown()) {
 
             //region Checkar se está tudo "ok"
@@ -195,7 +223,7 @@ public class PlusActivity extends AppCompatActivity {
 
         } else if ((findViewById(R.id.pnlNewCoima)).isShown()) {
 
-            //region Checkar se está tudo "ok"
+            //region Checkar se está tudo "ok", Multas
             String valorcoima = ((EditText) findViewById(R.id.txtValorMulta)).getText().toString();
             String DataHora = ((EditText) findViewById(R.id.txtDataHoraMulta)).getText().toString();
             String DetalhesMulta = ((EditText) findViewById(R.id.txtDetalhesMulta)).getText().toString();
@@ -218,8 +246,10 @@ public class PlusActivity extends AppCompatActivity {
             //endregion
             //region Checkar se existe data
 
-            if (DataHora.equals(""))
+            if (DataHora.equals("")) {
                 ((EditText) findViewById(R.id.txtDataHoraMulta)).setError("A data não pode estar a vazio ... clica em mim!!");
+                return false;
+            }
             //endregion
             //endregion
 
