@@ -46,13 +46,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@RestController
 @RequestMapping(path = "/Account")
 public class LoginController {
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @PostMapping(path = "/Login", produces = MediaType.APPLICATION_JSON_VALUE)
     public String Login(@RequestBody String body) {
-        logger.info("Saying Hello to the world");
+        logger.info("Saying Hello to the world11");
 
         String url = "jdbc:mysql://localhost:3306/trackcar";
         String user = "root";

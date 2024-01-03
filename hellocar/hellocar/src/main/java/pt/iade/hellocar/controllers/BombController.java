@@ -21,7 +21,6 @@ import com.mysql.cj.xdevapi.JsonArray;
 
 import pt.iade.hellocar.models.ClassBombas;
 
-
 @RestController
 @RequestMapping(path = "/bomb")
 public class BombController {
@@ -256,25 +255,25 @@ public class BombController {
 
             // GasoleoS += (((JsonValue) json.get(a)).get("GasoleoS").getAsFloat());
             for (int a = 0; a < len; a++) {
-                if (GasoleoS < json[a].geteoS())
+                if (GasoleoS < json[a].geteoS() || GasoleoS != 0.0f)
                     GasoleoS = json[a].geteoS();
 
-                if (GasoleoE < json[a].geteoE())
+                if (GasoleoE < json[a].geteoE() || GasoleoE != 0.0f)
                     GasoleoE = json[a].geteoE();
 
-                if (GasolinaS95 < json[a].getiNAs95())
+                if (GasolinaS95 < json[a].getiNAs95() || GasolinaS95 != 0.0f)
                     GasolinaS95 = json[a].getiNAs95();
 
-                if (GasolinaE95 < json[a].getiNAe95())
+                if (GasolinaE95 < json[a].getiNAe95() || GasolinaE95 != 0.0f)
                     GasolinaE95 = json[a].getiNAe95();
 
-                if (Gasolina98 < json[a].getiNA98())
+                if (Gasolina98 < json[a].getiNA98() || Gasolina98 != 0.0f)
                     Gasolina98 = json[a].getiNA98();
 
-                if (GasolinaE98 < json[a].getinaE98())
+                if (GasolinaE98 < json[a].getinaE98() || GasolinaE98 != 0.0f)
                     GasolinaE98 = json[a].getinaE98();
 
-                if (GPLAuto < json[a].getGPL())
+                if (GPLAuto < json[a].getGPL() || GPLAuto != 0.0f)
                     GPLAuto = json[a].getGPL();
 
             }
@@ -307,26 +306,26 @@ public class BombController {
             // String aaa = (String) json.get(1).toString();
 
             // GasoleoS += (((JsonValue) json.get(a)).get("GasoleoS").getAsFloat());
-            for (int a = 0; a < len; a++) {
-                if (GasoleoS > json[a].geteoS())
+            for (int a = 1; a < len; a++) {
+                if (GasoleoS > json[a].geteoS() || GasoleoS == 0.0f)
                     GasoleoS = json[a].geteoS();
 
-                if (GasoleoE > json[a].geteoE())
+                if (GasoleoE > json[a].geteoE() || GasoleoE == 0.0f)
                     GasoleoE = json[a].geteoE();
 
-                if (GasolinaS95 > json[a].getiNAs95())
+                if (GasolinaS95 > json[a].getiNAs95() || GasolinaS95 == 0.0f)
                     GasolinaS95 = json[a].getiNAs95();
 
-                if (GasolinaE95 > json[a].getiNAe95())
+                if (GasolinaE95 > json[a].getiNAe95() || GasolinaE95 == 0.0f)
                     GasolinaE95 = json[a].getiNAe95();
 
-                if (Gasolina98 > json[a].getiNA98())
+                if (Gasolina98 > json[a].getiNA98() || Gasolina98 == 0.0f)
                     Gasolina98 = json[a].getiNA98();
 
-                if (GasolinaE98 > json[a].getinaE98())
+                if (GasolinaE98 > json[a].getinaE98() || GasolinaE98 == 0.0f)
                     GasolinaE98 = json[a].getinaE98();
 
-                if (GPLAuto > json[a].getGPL())
+                if (GPLAuto > json[a].getGPL() || GPLAuto == 0.0f)
                     GPLAuto = json[a].getGPL();
 
             }

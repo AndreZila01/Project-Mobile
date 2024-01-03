@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.common.internal.FallbackServiceBroker;
@@ -28,7 +29,10 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -38,6 +42,7 @@ import okhttp3.Response;
 public class RegistarActivity extends AppCompatActivity {
 
     GregorianCalendar dateWhatever;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +55,7 @@ public class RegistarActivity extends AppCompatActivity {
 
         findViewById(R.id.btnRegist).setOnClickListener(this::onClick);
         ((EditText) findViewById(R.id.txtNasc)).setFocusable(false);
-        ((TextView)findViewById(R.id.txtNasc)).setOnClickListener(this::onClick);
+        ((TextView) findViewById(R.id.txtNasc)).setOnClickListener(this::onClick);
 
         (findViewById(R.id.BackActivity)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,15 +69,15 @@ public class RegistarActivity extends AppCompatActivity {
     private void onClick(View v) {
 
         int temp = v.getId();
-        if(temp == R.id.btnRegist) {
+        if (temp == R.id.btnRegist) {
 
-            try{
-            if (CheckValues())
-                CreateAccount();
-        }catch (Exception ex)
-            {}
-        }
-        else if(temp == R.id.txtNasc){
+            try {
+                if (CheckValues())
+                    CreateAccount();
+            } catch (Exception ex) {
+                Log.d("", "");
+            }
+        } else if (temp == R.id.txtNasc) {
             InputMethodManager imm = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
             //Find the currently focused view, so we can grab the correct window token from it.
             View view = this.getCurrentFocus();
@@ -91,18 +96,18 @@ public class RegistarActivity extends AppCompatActivity {
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                     dateWhatever = new GregorianCalendar(year, month, dayOfMonth);
-                    ((TextView)findViewById(R.id.txtNasc)).setText(""+day+"/"+month+"/"+year);
+                    ((TextView) findViewById(R.id.txtNasc)).setText("" + day + "/" + (month + 1) + "/" + year);
                 }
 
             }, year, month, day);
             datepick.setTitle("select date");
             datepick.show();
-        }
-        else if(temp == R.id.textView2){
+        } else if (temp == R.id.textView2) {
 
         }
     }
 
+    public static final MediaType  aaa = MediaType.parse("application/json; charset=utf-8");
     private void CreateAccount() throws IOException {
 
         String url = "http://10.0.2.2:8080/Account/Login";
@@ -110,22 +115,34 @@ public class RegistarActivity extends AppCompatActivity {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("email", "your-email@email.com")
-                .addFormDataPart("name", "your-name")
                 .build();
 
         Request request = new Request.Builder()
                 .url(url)
-                .post(requestBody)
+                .post(RequestBody.create(aaa, "adadwadawda"))
                 .build();
 
-        Response response = new OkHttpClient().newCall(request).execute();
+        new OkHttpClient().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                Log.d("", "");
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+if(response.isSuccessful()){
+    Log.d("", "");
+}
+            }
+        });
 
 //Todo: Ligar a api via Post com o seguinte body:
 // "[{\"Username\": \""+username+"\", \"Nome\": \""+NomeApe.split(" ")[0]+"\", \"Apelido\":\""+NomeApe.split(" ")[1]+"\", \"Email\":\""+email+"\", \"Password\":\""+pass+"\", \"Nascimento\":\""+dataNascimento+"\"}]
 
     }
 
-    private boolean CheckValues(){
+    private boolean CheckValues() {
         String pass = ((TextView) findViewById(R.id.txtPass)).getText().toString();
         String username = ((TextView) findViewById(R.id.txtUsername)).getText().toString();
         String email = ((TextView) findViewById(R.id.txtEmail)).getText().toString();
@@ -167,37 +184,37 @@ public class RegistarActivity extends AppCompatActivity {
         }
 
         if (NomeApe.equals("")) {
-            ((TextView) findViewById(R.id.txtUsername)).setError("O Nome e Apelido não pode estar vazio!!");
+            ((TextView) findViewById(R.id.txtName)).setError("O Nome e Apelido não pode estar vazio!!");
             return false;
         }
 
         if (email.equals("")) {
-            ((TextView) findViewById(R.id.txtUsername)).setError("O email não pode estar vazio!!");
+            ((TextView) findViewById(R.id.txtEmail)).setError("O email não pode estar vazio!!");
             return false;
         }
 
         if (confemail.equals("")) {
-            ((TextView) findViewById(R.id.txtUsername)).setError("A confirmação do email não pode estar vazia!!");
+            ((TextView) findViewById(R.id.txtConfEmail)).setError("A confirmação do email não pode estar vazia!!");
             return false;
         }
 
         if (pass.equals("")) {
-            ((TextView) findViewById(R.id.txtUsername)).setError("Tens de escrever uma palavra passe, não pode estar vazio!!");
+            ((TextView) findViewById(R.id.txtPass)).setError("Tens de escrever uma palavra passe, não pode estar vazio!!");
             return false;
         }
 
         if (confpass.equals("")) {
-            ((TextView) findViewById(R.id.txtUsername)).setError("Tens de escrever a confirmação da palavra passe, não pode estar vazio!!");
+            ((TextView) findViewById(R.id.txtConfPass)).setError("Tens de escrever a confirmação da palavra passe, não pode estar vazio!!");
             return false;
         }
 
         if (dataNascimento.equals("")) {
-            ((TextView) findViewById(R.id.txtUsername)).setError("A data de Nascimento não pode estar vazia. Clica em mim!!");
+            ((TextView) findViewById(R.id.txtNasc)).setError("A data de Nascimento não pode estar vazia. Clica em mim!!");
             return false;
         }
 
-        if (pass.length()<8) {
-            ((TextView) findViewById(R.id.txtUsername)).setError("Parece que a sua palavra passe tem poucos caracteres!!");
+        if (pass.length() < 8) {
+            ((TextView) findViewById(R.id.txtPass)).setError("Parece que a sua palavra passe tem poucos caracteres!!");
             return false;
         }
 

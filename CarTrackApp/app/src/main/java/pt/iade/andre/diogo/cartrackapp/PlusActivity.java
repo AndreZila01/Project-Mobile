@@ -132,12 +132,12 @@ public class PlusActivity extends AppCompatActivity {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     if (s == R.id.txtPlusAnoMes)
-                        ((TextView) findViewById(R.id.txtPlusAnoMes)).setText(dayOfMonth + "/" + month + "/" + year);
+                        ((TextView) findViewById(R.id.txtPlusAnoMes)).setText(dayOfMonth + "/" + month+1 + "/" + year);
                     if (s == R.id.txtDataHoraMulta)
-                        ((TextView) findViewById(R.id.txtDataHoraMulta)).setText(dayOfMonth + "/" + month + "/" + year);
+                        ((TextView) findViewById(R.id.txtDataHoraMulta)).setText(dayOfMonth + "/" + month+1 + "/" + year);
                     if (s == R.id.txtInspDataHora)
-                        ((TextView) findViewById(R.id.txtInspDataHora)).setText(dayOfMonth + "/" + month + "/" + year);
-                    dateWhatever = new GregorianCalendar(year, month, dayOfMonth);
+                        ((TextView) findViewById(R.id.txtInspDataHora)).setText(dayOfMonth + "/" + month+1 + "/" + year);
+                    dateWhatever = new GregorianCalendar(year, month+1, dayOfMonth);
 
                     TimePickerDialog timepick = new TimePickerDialog(PlusActivity.this, new TimePickerDialog.OnTimeSetListener() {
 
@@ -211,6 +211,8 @@ public class PlusActivity extends AppCompatActivity {
             }
 
             if (((Spinner) findViewById(R.id.spnCarro)).getSelectedItem().toString() == "Sem Dados") {
+
+            }
 
 
                 //endregion
