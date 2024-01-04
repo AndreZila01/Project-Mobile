@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.mysql.cj.log.Log;
 import com.mysql.cj.xdevapi.JsonArray;
 import com.mysql.cj.xdevapi.JsonValue;
 
@@ -47,7 +48,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping(path = "/Account")
 public class LoginController {
@@ -66,48 +66,72 @@ public class LoginController {
 
         try {
 
-            JsonObject jsonObject = new Gson().fromJson(body, JsonObject.class);
+            //JsonObject jsonObject = new Gson().fromJson(body, JsonObject.class);
+            ClassLogin jsonObject = new Gson().fromJson(body, ClassLogin.class);
 
             // Now you can access values from the JsonObject
-            String password = jsonObject.get("password").getAsString();
-            String username = jsonObject.get("username").getAsString();
+            String password = jsonObject.getPassword();
+            String username = jsonObject.getUsername();
 
             Connection connection = DriverManager.getConnection(url, user, pass);
             var st = connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT Username, Password FROM trackcar.tbllogin where Username='"
+            ResultSet rs = st.executeQuery("SELECT idLogin FROM trackcar.tbllogin where Username='"
                     + username + "' and Password='" + password + "'");
 
             System.out.println("Database connected!");
+            rs.next();
+            if (rs.getString("idLogin") != null)
+                return "O utilizador -" + rs.getString("idLogin") + "- fez login!!";
+            else
+                return "Algum dado invalido";
         } catch (SQLException e) {
-            throw new IllegalStateException("Cannot connect the database!", e);
+
+            System.out.println(e.getMessage());
+            return "Error, " + e.getMessage();
+            // throw new IllegalStateException("Cannot connect the database!", e);
         }
 
-        return "Hello World";
     }
 
     @PostMapping(path = "/Create", produces = MediaType.APPLICATION_JSON_VALUE)
     public String RegistNewAccount(@RequestBody String body) {
         logger.info("Create Account");
 
-        //body ="[{\"Id\":0, \"Username\": \"a\", \"Nome\": \"a\", \"Apelido\":\"a\", \"Email\":\"a@gmail.com\", \"Password\":\"12345678\", \"Nascimento\":\"10/1/2024\"}]";
-
-        ClassRegist[] json = new Gson().fromJson(body.replace("\"", "\\\""), ClassRegist[].class); // Expected name at line 1 column 3 path $[0]. (com o replace)
-        // Expected a com.google.gson.JsonObject but was com.google.gson.JsonArray; at path $ (sem o replace)
+        ClassRegist json = new Gson().fromJson(body, ClassRegist.class);
 
         String url = "jdbc:mysql://localhost:3306/trackcar";
         String user = "root";
         String pass = "admin";
-        // You don't need a username and password for integrated security
 
         try {
             Connection connection = DriverManager.getConnection(url, user, pass);
             var st = connection.createStatement();
-            ResultSet rs = st.executeQuery("select * from tblcar");
-            System.out.println("Database connected!");
+
+            ResultSet rs = st.executeQuery(
+                    "SELECT COUNT(*) as Value FROM (SELECT tbllogin.idLogin FROM tbllogin, tblClient WHERE Username LIKE '"
+                            + json.getUsername() + "' OR Email LIKE '" + json.getEmail() + "') x;");
+
+            rs.next();
+            if (rs.getString("Value") == "0") {
+                st.executeUpdate("Insert into tbllogin(Username, Password) values('" + json.getUsername()
+                        + "', '" + json.getPassword() + "')");
+                st.executeUpdate("insert into tblClient(FirstName, LastName, idLogin, DataNascimento, Email) values('"
+                        + json.getNome() + "', '" + json.getApelido()
+                        + "', (Select idLogin From (select * from tblLogin where Username like '"
+                        + json.getUsername() + "') x), '"
+                        + json.getNascimento() + "', '" + json.getEmail() + "')");
+                connection.close();
+                System.out.println("Database connected!");
+                return "Utilizador registado com sucesso";
+            } else
+                return "Utilizador já existente!!";
+
         } catch (SQLException e) {
-            throw new IllegalStateException("Cannot connect the database!", e);
+
+            System.out.println(e.getMessage());
+            return "Error, " + e.getMessage();
+            // throw new IllegalStateException("Cannot connect the database!", e);
         }
 
-        return "Hello World";
     }
 }

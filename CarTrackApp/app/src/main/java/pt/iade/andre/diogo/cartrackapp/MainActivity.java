@@ -23,12 +23,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolBar;
     ActivityOnClickListener onClickListener;
 
+    public int idUser =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         onClickListener = new ActivityOnClickListener();
+        Intent intent = getIntent();
+        idUser = intent.getIntExtra("idUser", 1);
 
         background_doWork(); // função para incrementar todos os valores aqui!!
     }
