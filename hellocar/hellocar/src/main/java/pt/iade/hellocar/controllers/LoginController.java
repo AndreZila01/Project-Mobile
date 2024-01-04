@@ -19,6 +19,7 @@ import com.mysql.cj.xdevapi.JsonValue;
 
 import pt.iade.hellocar.models.ClassBombas;
 import pt.iade.hellocar.models.ClassLogin;
+import pt.iade.hellocar.models.ClassRegist;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -84,9 +85,14 @@ public class LoginController {
         return "Hello World";
     }
 
-    @GetMapping(path = "/Create", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String RegistNewAccount() {
-        logger.info("Saying Hello to the world");
+    @PostMapping(path = "/Create", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String RegistNewAccount(@RequestBody String body) {
+        logger.info("Create Account");
+
+        //body ="[{\"Id\":0, \"Username\": \"a\", \"Nome\": \"a\", \"Apelido\":\"a\", \"Email\":\"a@gmail.com\", \"Password\":\"12345678\", \"Nascimento\":\"10/1/2024\"}]";
+
+        ClassRegist[] json = new Gson().fromJson(body.replace("\"", "\\\""), ClassRegist[].class); // Expected name at line 1 column 3 path $[0]. (com o replace)
+        // Expected a com.google.gson.JsonObject but was com.google.gson.JsonArray; at path $ (sem o replace)
 
         String url = "jdbc:mysql://localhost:3306/trackcar";
         String user = "root";

@@ -86,14 +86,14 @@ public class BombController {
                         "application/x-www-form-urlencoded");
 
                 connection.setRequestProperty("Content-Language", "en-US");
-                connection.setRequestProperty("content-type", "application/json;  charset=utf-8");
+                connection.setRequestProperty("content-type", "application/json;  charset=UTF-8");
 
                 connection.setUseCaches(false);
                 connection.setDoOutput(true);
 
                 // Get Response
                 InputStream is = connection.getInputStream();
-                BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+                BufferedReader rd = new BufferedReader(new InputStreamReader(is, "UTF-8"));
                 StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
                 String line;
                 while ((line = rd.readLine()) != null) {

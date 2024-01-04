@@ -90,13 +90,13 @@ public class RegistarActivity extends AppCompatActivity {
             final Calendar c = Calendar.getInstance();
             final int year = c.get(Calendar.YEAR);
             final int month = c.get(Calendar.MONTH);
-            final int day = c.get(Calendar.DAY_OF_MONTH);
+            final int day = c.get(Calendar.DAY_OF_WEEK);
             DatePickerDialog datepick = new DatePickerDialog(RegistarActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                     dateWhatever = new GregorianCalendar(year, month, dayOfMonth);
-                    ((TextView) findViewById(R.id.txtNasc)).setText("" + day + "/" + (month + 1) + "/" + year);
+                    ((TextView) findViewById(R.id.txtNasc)).setText("" + dayOfMonth + "/" + (month + 1) + "/" + year);
                 }
 
             }, year, month, day);
@@ -110,16 +110,17 @@ public class RegistarActivity extends AppCompatActivity {
     public static final MediaType  aaa = MediaType.parse("application/json; charset=utf-8");
     private void CreateAccount() throws IOException {
 
-        String url = "http://10.0.2.2:8080/Account/Login";
+        String url = "http://10.0.2.2:8080/Account/Create";
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("email", "your-email@email.com")
                 .build();
 
+        String json = "[{\"Id\":0, \"Username\": \""+((TextView)findViewById(R.id.txtUsername)).getText()+"\", \"Nome\": \""+((TextView)findViewById(R.id.txtName)).getText().toString().split(" ")[0]+"\", \"Apelido\":\""+((TextView)findViewById(R.id.txtName)).getText().toString().split(" ")[1]+"\", \"Email\":\""+((TextView)findViewById(R.id.txtEmail)).getText()+"\", \"Password\":\""+((TextView)findViewById(R.id.txtPass)).getText()+"\", \"Nascimento\":\""+((TextView)findViewById(R.id.txtNasc)).getText()+"\"}]";
         Request request = new Request.Builder()
                 .url(url)
-                .post(RequestBody.create(aaa, "adadwadawda"))
+                .post(RequestBody.create(aaa, json))
                 .build();
 
         new OkHttpClient().newCall(request).enqueue(new Callback() {
@@ -138,7 +139,7 @@ if(response.isSuccessful()){
         });
 
 //Todo: Ligar a api via Post com o seguinte body:
-// "[{\"Username\": \""+username+"\", \"Nome\": \""+NomeApe.split(" ")[0]+"\", \"Apelido\":\""+NomeApe.split(" ")[1]+"\", \"Email\":\""+email+"\", \"Password\":\""+pass+"\", \"Nascimento\":\""+dataNascimento+"\"}]
+//
 
     }
 
@@ -173,7 +174,7 @@ if(response.isSuccessful()){
             return false;
         }
 
-        if (NomeApe.contains(" ")) {
+        if (!NomeApe.contains(" ")) {
             ((TextView) findViewById(R.id.txtName)).setError("O Nome e Apelido devem ter um espaço!!");
             return false;
         }
