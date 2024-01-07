@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="first_car" type="id" />
+    <item name="textViewDocumentacaoPlacas" type="id" />
+    <item name="textViewEstruturaCarroceria" type="id" />
+    <item name="textViewEmissoes" type="id" />
+    <item name="textViewTransmissaoEmbreagem" type="id" />
+    <item name="textViewSistemaEletrico" type="id" />
+    <item name="textViewSuspensaoDirecao" type="id" />
+    <item name="textViewFreios" type="id" />
+    <item name="textViewMotor" type="id" />
+    <item name="textViewUltimaInspecao" type="id" />
+    <item name="textViewProximaInspecao" type="id" />
+    <item name="textViewMarca3" type="id" />
+    <item name="imageView9" type="id" />
 </resources>

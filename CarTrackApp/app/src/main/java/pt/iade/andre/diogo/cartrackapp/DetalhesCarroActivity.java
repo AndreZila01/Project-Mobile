@@ -2,7 +2,6 @@ package pt.iade.andre.diogo.cartrackapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +36,7 @@ public class DetalhesCarroActivity extends AppCompatActivity {
 
 
         ((TextView) findViewById(R.id.lblModelo)).setText(getString(R.string.lblModelo)+ "  " + item.getModelo());
-        ((TextView) findViewById(R.id.lblMatricula)).setText(getString(R.string.lblMatri)+ "  " + item.getMatricula());
+        ((TextView) findViewById(R.id.lblMatricula)).setText(getString(R.string.lblMatricula)+ "  " + item.getMatricula());
         ((TextView) findViewById(R.id.lblCilindrada)).setText(getString(R.string.lblCilindrada)+ "  " + item.getCC());
         ((TextView) findViewById(R.id.lblConsumo)).setText(getString(R.string.lblConsumo)+ "  " + item.getConsumo());
         ((TextView) findViewById(R.id.lblMesAno)).setText(getString(R.string.lblMesAno)+ "  " + item.getMesAno());

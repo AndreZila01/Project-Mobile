@@ -52,6 +52,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     implementation("com.mikhaellopez:circularimageview:4.3.1")
     implementation("com.squareup.okhttp3:okhttp:4.8.0")
+    implementation("com.google.code.findbugs:jsr305:3.0.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

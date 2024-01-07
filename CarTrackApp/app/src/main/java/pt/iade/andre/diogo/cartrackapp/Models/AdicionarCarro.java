@@ -1,4 +1,4 @@
-package pt.iade.andre.diogo.cartrackapp;
+package pt.iade.andre.diogo.cartrackapp.Models;
 
 import java.util.ArrayList;
 

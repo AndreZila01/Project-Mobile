@@ -17,13 +17,14 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     Toolbar toolBar;
     ActivityOnClickListener onClickListener;
 
-    public int idUser =0;
+    public int idUser = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         background_doWork(); // função para incrementar todos os valores aqui!!
     }
 
-    public void background_doWork(){
+    public void background_doWork() {
 
         //region Funcionalidades
         toolBar = findViewById(R.id.ToolbarMain); // procura no projeto um id com ToolbarMain e envia para toolBar
@@ -72,41 +73,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //endregion
     }
-    public void onClick(View v)
-    {
+
+    public void onClick(View v) {
         // TODO: Adicionar a view activity adicionar bombas google maps.
 
         // TODO: Adicionar a view activity adicionar fatura ou carro.
 
         int id = v.getId();
 
-        if(id == R.id.pctBdComb)
-        {
+        if (id == R.id.pctBdComb) {
             Intent intent = new Intent(MainActivity.this, BombActivity.class);
             startActivity(intent);
-        }
-        else if(id == R.id.pctNoticias)
-        {
+        } else if (id == R.id.pctNoticias) {
             Intent intent = new Intent(MainActivity.this, NoticiasActivity.class);
             startActivity(intent);
 
             //play button2 sound
-        }
-        else if(id == R.id.pctPrecosCarros){
-
-        }
-        else if(id == R.id.pcticonUser){
+        } else if (id == R.id.pctPrecosCarros) {
+            Intent intent = new Intent(MainActivity.this, PrecoCarrosActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.pcticonUser) {
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
             startActivity(intent);
-        }
-        else if(id == R.id.btnCarPayvalue){
+        } else if (id == R.id.btnCarPayvalue) {
             Intent intent = new Intent(MainActivity.this, PlusActivity.class);
             startActivity(intent);
         }
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         if (drawerLayout.isDrawerOpen((GravityCompat.START)))
             drawerLayout.closeDrawer(GravityCompat.START);
         else
@@ -117,18 +113,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int s = item.getItemId();
 
-        if(s == R.id.nav_car)
-        {
+        if (s == R.id.nav_car) {
             Intent intent = new Intent(MainActivity.this, CarrosActivity.class);
             startActivity(intent); // Start the CarrosActivity
 
             Toast.makeText(getApplicationContext(), "Clicado o 1", Toast.LENGTH_LONG).show();
+        } else if (s == R.id.nav_screwdriver) {
+            Intent intent = new Intent(MainActivity.this, InspecoesActivity.class);
+            startActivity(intent);
+        }else if (s == R.id.nav_multas) {
+            Intent intent = new Intent(MainActivity.this, MultasActivity.class);
+            startActivity(intent);
         }
-
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     private class ActivityOnClickListener implements View.OnClickListener {
 

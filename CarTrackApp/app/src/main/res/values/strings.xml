@@ -1,4 +1,3 @@
-
 <resources>
     <string name="app_name">CarTrackApp</string>
     <string name="menu_open">Aberto</string>
@@ -21,13 +20,34 @@
     <string name="lblHello">Olá Diogo</string>
     <string name="title_activity_car">activity_car</string>
     <string name="apiGoogleMaps">AIzaSyA8ZT4gKjObDkc9s5NE7xVRDBuv7-j8HQI</string>
-    <string name="lblModelo">Modelo: </string>
+    <string name="lblModelo">Modelo:\u0020</string>
+    <string name="lblData">Data:\u0020</string>
+    <string name="lblEmailInspecao">Email:\u0020</string>
+    <string name="lblProximaInspecao">Proxima Inspeção:\u0020</string>
+    <string name="lblUltimaInspecao">Ultima Inspeção:\u0020</string>
+    <string name="lblPreco">Preço:\u0020</string>
+    <string name="lblMotor">Motor:\u0020</string>
+    <string name="lblFreios">Freios:\u0020</string>
+    <string name="lblSuspensaoDirecao">Suspensao Direção:\u0020</string>
+    <string name="lblSistemaEletrico">Sistema Elétrico:\u0020</string>
+    <string name="lblTransmissaoEmbreagem">Transmisão Embreagem:\u0020</string>
+    <string name="lblChefeDoCentro">Chefe Do Centro:\u0020</string>
+    <string name="lblEstruturaCarroceria">Estrutura Carroceria:\u0020</string>
+    <string name="lblDocumentacaoPlacas">Documentacao Placas:\u0020</string>
+    <string name="lblMorada">Morada:\u0020</string>
+    <string name="lblTelefone">Telefone:\u0020</string>
+    <string name="lblNomeCentro">Nome Centro:\u0020</string>
+    <string name="lblEmissoes">Emissoes:\u0020</string>
+    <string name="lblTipo">Tipo:\u0020</string>
+    <string name="lblDescriacao">Descrição:\u0020</string>
+    <string name="lblValor">Valor:\u0020</string>
     <string name="lblCilindrada">Cilindrada: </string>
     <string name="lblConsumo">Consumo: </string>
     <string name="lblMesAno">Ano/Mes: </string>
     <string name="lblKm">Km feitos: </string>
     <string name="lbllastLoc">Ultima Localização: </string>
-    <string name="lblMatri">Matricula: </string>
+    <string name="lblMatricula">Matricula:\u0020</string>
+    <string name="lblMarca">Marca:\u0020</string>b
     <string name="lblName">Nome e Apelido </string>
     <string name="lblSettings">Settings</string>
     <string name="lblLogOut">LogOut</string>
@@ -53,6 +73,12 @@
     <string name="lblDataEHoraInspecaoHint">Data e Hora da Inspecção</string>
     <string name="lblValorMultaHint">Valorda Multa</string>
     <string name="lblDataEHoraMultaHint">Data e Hora da Multa</string>
+    <string name="Marca" />
+    <string name="Tipo" />
+    <string name="Matricula" />
+    <string name="Descriçao" />
+    <string name="Valor" />
+    <string name="Data" />
 
     <string-array name="Consumo">
         <item>Eletrico</item>

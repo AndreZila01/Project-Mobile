@@ -90,7 +90,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 // TODO: Edit message.
-                new AlertDialog.Builder(LoginActivity.this).setTitle("Campos em Falta!").setMessage("Os campos acima, não podem estar vazios!!").setPositiveButton(android.R.string.ok, null).setIcon(android.R.drawable.ic_dialog_alert).show();
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new AlertDialog.Builder(LoginActivity.this).setTitle("Campos em Falta!").setMessage("Os campos acima, não podem estar vazios!!").setPositiveButton(android.R.string.ok, null).setIcon(android.R.drawable.ic_dialog_alert).show();
+                    }
+                });
+
             }
 
             @Override

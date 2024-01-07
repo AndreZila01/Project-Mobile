@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import pt.iade.andre.diogo.cartrackapp.Models.ClassCar;
-import pt.iade.andre.diogo.cartrackapp.Models.ClassNews;
 import pt.iade.andre.diogo.cartrackapp.R;
 
 
@@ -40,7 +39,7 @@ public class CarItemRowAdapter extends RecyclerView.Adapter<CarItemRowAdapter.Vi
      * @param listener Event handler for the click.
      */
     public void setOnClickListener(ItemClickListener listener) {
-        clickListenercar = listener;
+        clickListenercar = (ItemClickListener) listener;
     }
 
     /**
