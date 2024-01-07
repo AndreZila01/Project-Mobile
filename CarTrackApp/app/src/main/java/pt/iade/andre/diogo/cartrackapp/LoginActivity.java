@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void CheckDataBase(String username, String password) {
 
+        txtUserEm.requestFocus();
         String url = "http://10.0.2.2:8080/Account/Login";
 
 
@@ -98,14 +99,23 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     // TODO: response has id.
-                    //Toast.makeText(getApplicationContext(), "Clicado o botão", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("idNew", response.body().string().toString().split("-")[1].split("-")[0]);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    txtPass.setText("");
-                    txtUserEm.setText("");
-                    //txtUserEm.requestFocus();
-                    startActivityForResult(intent, 1);
+                    String value = response.body().string().toString();
+                    if (value.contains("- fez login!!")) {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("idNew", value.split("-")[1].split("-")[0]);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        txtPass.setText("");
+                        txtUserEm.setText("");
+                        startActivityForResult(intent, 1);
+                    } else
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "O utilizador está com os dados invalidos!", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+
                 }
             }
         });

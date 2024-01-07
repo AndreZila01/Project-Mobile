@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     DrawerLayout drawerLayout;
     Toolbar toolBar;
+    public static int IdUser=-1;
     ActivityOnClickListener onClickListener;
 
-    public int idUser =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         onClickListener = new ActivityOnClickListener();
         Intent intent = getIntent();
-        idUser = intent.getIntExtra("idUser", 1);
+        IdUser = intent.getIntExtra("idUser", 1);
 
         background_doWork(); // função para incrementar todos os valores aqui!!
     }

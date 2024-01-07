@@ -65,7 +65,8 @@ public class LoginController {
         ClassLogin as = new ClassLogin();
 
         try {
-
+            
+            Connection connection = DriverManager.getConnection(url, user, pass);
             //JsonObject jsonObject = new Gson().fromJson(body, JsonObject.class);
             ClassLogin jsonObject = new Gson().fromJson(body, ClassLogin.class);
 
@@ -73,7 +74,6 @@ public class LoginController {
             String password = jsonObject.getPassword();
             String username = jsonObject.getUsername();
 
-            Connection connection = DriverManager.getConnection(url, user, pass);
             var st = connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT idLogin FROM trackcar.tbllogin where Username='"
                     + username + "' and Password='" + password + "'");
@@ -81,9 +81,16 @@ public class LoginController {
             System.out.println("Database connected!");
             rs.next();
             if (rs.getString("idLogin") != null)
-                return "O utilizador -" + rs.getString("idLogin") + "- fez login!!";
-            else
+            {
+                String s = rs.getString("idLogin");
+                
+                connection.close();
+                return "O utilizador -" + s + "- fez login!!";
+            }else
+            {
+                connection.close();
                 return "Algum dado invalido";
+                }
         } catch (SQLException e) {
 
             System.out.println(e.getMessage());
@@ -122,6 +129,7 @@ public class LoginController {
                         + json.getNascimento() + "', '" + json.getEmail() + "')");
                 connection.close();
                 System.out.println("Database connected!");
+                
                 return "Utilizador registado com sucesso";
             } else
                 return "Utilizador já existente!!";

@@ -8,13 +8,13 @@ public class ClassBombas implements Serializable {
     private String Bomba;
     private String Url;
     private String LonxLac;
-    private float GasoleoS;
-    private float GasoleoE;
-    private float GasolinaS95;
-    private float GasolinaE95;
-    private float Gasolina98;
-    private float GasolinaE98;
-    private float GPLAuto;
+        private float GasoleoS;
+        private float GasoleoE;
+        private float GasolinaS95;
+        private float GasolinaE95;
+        private float Gasolina98;
+        private float GasolinaE98;
+        private float GPLAuto;
 
     public ClassBombas() {
         this(0, "", "", "", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
