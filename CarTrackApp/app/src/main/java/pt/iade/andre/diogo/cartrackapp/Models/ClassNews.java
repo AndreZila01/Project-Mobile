@@ -1,5 +1,7 @@
 package pt.iade.andre.diogo.cartrackapp.Models;
 
+import com.google.gson.JsonObject;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,12 +11,23 @@ import java.util.Locale;
 
 public class ClassNews implements Serializable {
     private int id;
-    private Calendar date;
+    private String date;
     private String Shorttitle;
     private String LongTitle;
     private String UrlImg;
     private String TextOfNews;
     private String Author;
+
+    public ClassNews(JsonObject json) {
+        this.id = json.get("id").getAsInt();
+        this.date = json.get("date").getAsString();
+        this.Shorttitle = json.get("Shorttitle").getAsString();
+        this.LongTitle = json.get("LongTitle").getAsString();
+        this.UrlImg = json.get("UrlImg").getAsString();
+        this.Author = json.get("Author").getAsString();
+        this.TextOfNews = json.get("TextOfNews").getAsString();
+        this.UrlImg = json.get("UrlImg").getAsString();
+    }
 
 
     public ClassNews() {
@@ -23,12 +36,13 @@ public class ClassNews implements Serializable {
 
     public ClassNews(int id, Calendar date, String Shortitle, String LongTitle, String UrlImg, String TextOfNews, String Author) {
         this.id = id;
-        this.date = date;
+        this.date = date.toString();
         this.Shorttitle = Shortitle;
         this.LongTitle = LongTitle;
         this.UrlImg = UrlImg;
         this.Author = Author;
         this.TextOfNews = TextOfNews;
+        this.UrlImg = "https://img.freepik.com/premium-vector/car-icon-vehicle-icon-car-vector-icon_564974-1452.jpg";
     }
 
     /**
@@ -94,12 +108,17 @@ public class ClassNews implements Serializable {
     }
 
     public String getDate() {
-        return new SimpleDateFormat("dd/MM/yyyy").format(date.getTime()).toString();
+        try {
+            return new SimpleDateFormat("dd/MM/yyyy").format(date).toString();
+        }
+        catch (Exception ex){
+            return date.toString();
+        }
         //return (new SimpleDateFormat("dd-MM-YYYY").setCalendar(date));//("dd-MM-YYYY");
     }
 
     public void setDate(Calendar date) {
-        this.date = date;
+        this.date = date.toString();
     }
 
 

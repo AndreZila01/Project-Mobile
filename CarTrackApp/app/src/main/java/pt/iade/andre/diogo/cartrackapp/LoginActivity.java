@@ -29,6 +29,7 @@ import pt.iade.andre.diogo.cartrackapp.Models.ClassLogin;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static int IdUser=-1;
     TextView txtUserEm;
     TextView txtPass;
 
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!txtPass.getText().toString().isEmpty() && !txtUserEm.getText().toString().isEmpty()) {
                     // TODO : Checkar valores e se estão na database!
-                    CheckDataBase(txtPass.getText().toString(), txtUserEm.getText().toString());
+                    CheckDataBase(txtUserEm.getText().toString(), txtPass.getText().toString());
 
                 } else
                     new AlertDialog.Builder(LoginActivity.this).setTitle("Campos em Falta!").setMessage("Os campos acima, não podem estar vazios!!").setPositiveButton(android.R.string.ok, null).setIcon(android.R.drawable.ic_dialog_alert).show();
@@ -74,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void CheckDataBase(String username, String password) {
 
+        txtUserEm.requestFocus();
         String url = "http://10.0.2.2:8080/Account/Login";
 
 
@@ -104,14 +106,25 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     // TODO: response has id.
-                    //Toast.makeText(getApplicationContext(), "Clicado o botão", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("idNew", response.body().string().toString().split("-")[1].split("-")[0]);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    txtPass.setText("");
-                    txtUserEm.setText("");
-                    //txtUserEm.requestFocus();
-                    startActivityForResult(intent, 1);
+                    String value = response.body().string().toString();
+                    if (value.contains("- fez login!!")) {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        //intent.putExtra("Username", ((TextView)findViewById(R.id.txtUserEmail)).getText());
+                        //intent.putExtra("userid", value.split("-")[1].split("-")[0]);
+                        IdUser = Integer.parseInt(value.split("-")[1].split("-")[0]);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        txtPass.setText("");
+                        txtUserEm.setText("");
+                        startActivityForResult(intent, 1);
+                    } else
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "O utilizador está com os dados invalidos!", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+
                 }
             }
         });

@@ -2,35 +2,47 @@ package pt.iade.andre.diogo.cartrackapp.Models;
 
 import androidx.media3.common.Format;
 
+import com.google.gson.JsonObject;
+
 import java.io.Serializable;
 
 public class ClassCar implements Serializable {
-    private int id;
-    private String Matricula;
-    private String Marca;
+    private int IdCar;
+    private String MatriculaCarro;
     private String Modelo;
     private String MesAno;
-    private String UrlImg;
-    private String CC;
+    private int CV;
     private String Consumo;
-    private String Kmfeitos;
-    private String UltimaLocalizacao;
+    private String Marca;
+    private String UrlImg;
+    private Float Kmfeitos;
+    private String LastLocalization;
+
+    public ClassCar(JsonObject json) {
+        this.IdCar = json.get("IdCar").getAsInt();
+        this.CV = Integer.parseInt(json.get("CV").getAsString());
+        this.MatriculaCarro = json.get("MatriculaCarro").getAsString();
+        this.LastLocalization = json.get("LastLocalization").getAsString();
+        this.Consumo= json.get("Consumo").getAsString();
+        this.Kmfeitos = Float.parseFloat(json.get("KmFeitos").getAsString());
+        this.Modelo = json.get("Modelo").getAsString();
+        this.UrlImg = "https://img.freepik.com/premium-vector/car-icon-vehicle-icon-car-vector-icon_564974-1452.jpg";
+    }
 
 
     public ClassCar() {
-        this(0, "", "", "", "", "", "", "", "");
+        this(0, "", "", "", "", 0, 0.0f, "");
     }
 
-    public ClassCar(int id, String Matricula, String Modelo, String MesAno, String UrlImg, String Consumo, String CC, String Kmfeitos, String UltimaLocalizacao) {
-        this.id = id;
-        this.Matricula = Matricula;
+    public ClassCar(int id, String Matricula, String Modelo, String MesAno, String Consumo, int CV, Float Kmfeitos, String UltimaLocalizacao) {
+        this.IdCar = id;
+        this.MatriculaCarro = Matricula;
         this.Modelo = Modelo;
         this.MesAno = MesAno;
-        this.UrlImg = UrlImg;
-        this.CC = CC;
+        this.CV = CV;
         this.Consumo = Consumo;
         this.Kmfeitos = Kmfeitos;
-        this.UltimaLocalizacao = UltimaLocalizacao;
+        this.LastLocalization = UltimaLocalizacao;
     }
 
     /**
@@ -48,8 +60,8 @@ public class ClassCar implements Serializable {
      */
     public static ClassCar GetById(int id) {
 
-        return new ClassCar(id, "", "", "", "", "",
-                "Some description that we also get from the web server", "", "");
+        return new ClassCar(id, "", "", "", "",
+                0, 0.0f, "");
     }
 
     /**
@@ -67,45 +79,45 @@ public class ClassCar implements Serializable {
     }*/
 
     public int getId() {
-        return id;
+        return this.IdCar;
     }
 
     public String getMatricula() {
-        return Matricula;
+        return this.MatriculaCarro;
     }
     public String getModelo() {
-        return Modelo;
+        return this.Modelo;
     }
 
-  /*  public boolean isDone() {
-        return done;
-    }
+    /*  public boolean isDone() {
+          return done;
+      }
 
-    public void setDone(boolean done) {
-        this.done = done;
-    }
-*/
+      public void setDone(boolean done) {
+          this.done = done;
+      }
+  */
     public String getMesAno() {
-        return MesAno;
+        return this.MesAno;
     }
 
     public String getConsumo() {
         return Consumo;
     }
-    public String getKmfeitos() {
-        return Kmfeitos;
+    public Float getKmfeitos() {
+        return this.Kmfeitos;
     }
 
     public String getUrlImg() {
-        return UrlImg;
+        return this.UrlImg;
     }
 
     public String getUltimaLocalizacao() {
-        return UltimaLocalizacao;
+        return this.LastLocalization;
     }
 
     public void setMatricula(String Matricula) {
-        this.Matricula = Matricula;
+        this.MatriculaCarro = Matricula;
     }
 
     public void setTitleLon(String Modelo) {
@@ -113,12 +125,12 @@ public class ClassCar implements Serializable {
     }
 
     public int getid() {
-        return id;
+        return this.IdCar;
         //return (new SimpleDateFormat("dd-MM-YYYY").setCalendar(date));//("dd-MM-YYYY");
     }
 
     public void setid(int id) {
-        this.id = id;
+        this.IdCar = id;
     }
 
 
@@ -130,10 +142,10 @@ public class ClassCar implements Serializable {
         this.UrlImg = urlImg;
     }
 
-    public String getCC(){
-        return CC;
+    public int getCC(){
+        return CV;
     }
-    public void setAtualizacao(String UrlImg, String Consumo, String Kmfeitos, String Ultima){
+    public void setAtualizacao(String UrlImg, String Consumo, Float Kmfeitos, String Ultima){
         setUrlImg(UrlImg);
         setConsumo(Consumo);
         setKmfeitos(Kmfeitos);
@@ -141,7 +153,7 @@ public class ClassCar implements Serializable {
     }
 
     public String getResumo(){
-        String CC = getCC().toString();
+        int CC = getCC();
         String Consumo = getConsumo().toString();
         String Km = getKmfeitos().toString();
         String Loc = getUltimaLocalizacao().toString();
@@ -149,19 +161,19 @@ public class ClassCar implements Serializable {
         return String.format("Tem %s cavalos, combustivel do tipo %s, já percorreu %s kms e está de momento em %s", CC, Consumo, Km, Loc);
     }
 
-    public void setCC(String CC) {
-        this.CC = CC;
+    public void setCC(int CC) {
+        this.CV = CC;
     }
 
     public void setConsumo(String Consumo) {
         this.Consumo = Consumo;
     }
 
-    public void setKmfeitos(String Kmfeitos) {
+    public void setKmfeitos(Float Kmfeitos) {
         this.Kmfeitos = Kmfeitos;
     }
 
     public void setUltimaLocalizacao(String UltimaLocalizacao) {
-        this.UltimaLocalizacao = UltimaLocalizacao;
+        this.LastLocalization = UltimaLocalizacao;
     }
 }

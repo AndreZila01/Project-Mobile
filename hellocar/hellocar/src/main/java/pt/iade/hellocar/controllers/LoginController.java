@@ -65,25 +65,31 @@ public class LoginController {
         ClassLogin as = new ClassLogin();
 
         try {
-
+            
+            Connection connection = DriverManager.getConnection(url, user, pass);
             //JsonObject jsonObject = new Gson().fromJson(body, JsonObject.class);
             ClassLogin jsonObject = new Gson().fromJson(body, ClassLogin.class);
 
             // Now you can access values from the JsonObject
-            String password = jsonObject.getPassword();
             String username = jsonObject.getUsername();
+            String password = jsonObject.getPassword();
 
-            Connection connection = DriverManager.getConnection(url, user, pass);
             var st = connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT idLogin FROM trackcar.tbllogin where Username='"
-                    + username + "' and Password='" + password + "'");
+            ResultSet rs = st.executeQuery("SELECT idClient FROM trackcar.tbllogin inner join tblclient on tblclient.idLogin = tbllogin.idLogin where Username like '"+ username + "' and Password like '" + password + "'");
 
             System.out.println("Database connected!");
             rs.next();
-            if (rs.getString("idLogin") != null)
-                return "O utilizador -" + rs.getString("idLogin") + "- fez login!!";
-            else
+            if (rs.getString("idClient") != null)
+            {
+                String s = rs.getString("idClient");
+                
+                connection.close();
+                return "O utilizador -" + s + "- fez login!!";
+            }else
+            {
+                connection.close();
                 return "Algum dado invalido";
+                }
         } catch (SQLException e) {
 
             System.out.println(e.getMessage());
@@ -112,7 +118,7 @@ public class LoginController {
                             + json.getUsername() + "' OR Email LIKE '" + json.getEmail() + "') x;");
 
             rs.next();
-            if (rs.getString("Value") == "0") {
+            if (Integer.parseInt(rs.getString("Value")) == 0) {
                 st.executeUpdate("Insert into tbllogin(Username, Password) values('" + json.getUsername()
                         + "', '" + json.getPassword() + "')");
                 st.executeUpdate("insert into tblClient(FirstName, LastName, idLogin, DataNascimento, Email) values('"
@@ -122,6 +128,7 @@ public class LoginController {
                         + json.getNascimento() + "', '" + json.getEmail() + "')");
                 connection.close();
                 System.out.println("Database connected!");
+                
                 return "Utilizador registado com sucesso";
             } else
                 return "Utilizador já existente!!";

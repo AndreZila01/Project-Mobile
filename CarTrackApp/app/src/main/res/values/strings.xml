@@ -70,8 +70,8 @@
     <string name="lblValorMulta">Valor\nda Multa</string>
     <string name="lblDataEHoraMulta">Data e Hora\nda Multa</string>
     <string name="lblDetalhesDaMulta">Detalhes \nda Multa</string>
-    <string name="lblDataEHoraInspecaoHint">Data e Hora da Inspecção</string>
     <string name="lblValorMultaHint">Valorda Multa</string>
+    <string name="lblDataEHoraInspecaoHint">Data e Hora da Inspecção</string>
     <string name="lblDataEHoraMultaHint">Data e Hora da Multa</string>
     <string name="Marca" />
     <string name="Tipo" />
@@ -79,6 +79,9 @@
     <string name="Descriçao" />
     <string name="Valor" />
     <string name="Data" />
+
+    <string name="lblAnteriorBombas">Anterior</string>
+    <string name="lblProximoBombas">Proxima</string>
 
     <string-array name="Consumo">
         <item>Eletrico</item>
