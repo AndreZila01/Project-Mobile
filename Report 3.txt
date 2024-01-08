@@ -1,0 +1,7 @@
+Estava encarregue das activity do detalhes do carros e dos carro aparecerem em lista depois de serem adicionados como activity do detalhes das multas e das inspecoes e das lista que aparece nas inspecoes e nas multas.
+E como consequente fiz o adapters de cada activity e os models
+Fiz tambem a parte dos precos dos carros.
+Ajustos nas barra de navegaçao por causa destas activity.
+E fui ajudando um pouco no resto das activity quando era preciso.
+
+Diogo Nunes 20220540 D1 Track Car

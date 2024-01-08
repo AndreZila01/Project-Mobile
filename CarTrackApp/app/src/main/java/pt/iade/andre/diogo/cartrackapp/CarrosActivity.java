@@ -11,7 +11,7 @@ package pt.iade.andre.diogo.cartrackapp;
     import java.util.ArrayList;
 
     import pt.iade.andre.diogo.cartrackapp.Models.ClassCar;
-    import pt.iade.andre.diogo.cartrackapp.adapters.CarItemRowAdapter;
+    import pt.iade.andre.diogo.cartrackapp.adapters.CarItemRowAdapters;
 
 
 public class CarrosActivity extends AppCompatActivity {
@@ -19,7 +19,7 @@ public class CarrosActivity extends AppCompatActivity {
 
     protected ArrayList<ClassCar> itemsListCar;
 
-    protected CarItemRowAdapter carItemRowAdpdaterCar;
+    protected CarItemRowAdapters carItemRowAdpdaterCar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class CarrosActivity extends AppCompatActivity {
 
         //RelativeLayout et = (RelativeLayout)findViewById(R.id.pnlNoticias);
 
-        carItemRowAdpdaterCar = new CarItemRowAdapter(this, itemsListCar);
-        carItemRowAdpdaterCar.setOnClickListener(new CarItemRowAdapter.ItemClickListener() {
+        carItemRowAdpdaterCar = new CarItemRowAdapters(this, itemsListCar);
+        carItemRowAdpdaterCar.setOnClickListener(new CarItemRowAdapters.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(CarrosActivity.this, DetalhesCarroActivity.class);
