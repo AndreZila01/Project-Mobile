@@ -67,7 +67,7 @@ public class CarrosActivity extends AppCompatActivity {
 
         itemsListCar = new ArrayList<ClassCar>();
 
-        String path = "http://10.0.2.2:8080/car/" + MainActivity.IdUser+"/details";
+        String path = "http://10.0.2.2:8080/car/" + LoginActivity.IdUser+"/details";
 
         try {
             Request rq = new Request.Builder().url(path).build();

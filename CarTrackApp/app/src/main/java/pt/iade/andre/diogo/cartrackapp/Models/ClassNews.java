@@ -26,7 +26,7 @@ public class ClassNews implements Serializable {
         this.UrlImg = json.get("UrlImg").getAsString();
         this.Author = json.get("Author").getAsString();
         this.TextOfNews = json.get("TextOfNews").getAsString();
-        this.UrlImg = "https://img.freepik.com/premium-vector/car-icon-vehicle-icon-car-vector-icon_564974-1452.jpg";
+        this.UrlImg = json.get("UrlImg").getAsString();
     }
 
 

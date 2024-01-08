@@ -111,7 +111,7 @@ public class PlusActivity extends AppCompatActivity {
         }
 
         try {
-            String path = "http://10.0.2.2:8080/car/" + MainActivity.IdUser;
+            String path = "http://10.0.2.2:8080/car/" + LoginActivity.IdUser;
 
             try {
                 Request rq = new Request.Builder().url(path).build();
@@ -401,8 +401,8 @@ public class PlusActivity extends AppCompatActivity {
 
             json = new Gson().toJson("{\"CentroDeInspecoes\":\"" + ((Spinner) findViewById(R.id.spnCentroDeInspecao)).getSelectedItem().toString() + "\", \"DataHoraCentro\":\"" + ((EditText) findViewById(R.id.txtInspDataHora)).getText().toString() + "\", \"Carro\":\"" + ((Spinner) findViewById(R.id.spnCarro)).getSelectedItem().toString() + "\"}"); //TODO: Checkar se funfa, sem api
         } else if ((findViewById(R.id.pnlNewCar)).isShown()) {
-            url = "http://10.0.2.2:8080/car/" + MainActivity.IdUser + "/newCar";
-            ClassCar reg = new ClassCar(0, ((EditText) findViewById(R.id.txtPlusMatricula)).getText().toString(), ((EditText) findViewById(R.id.txtPlusModelo)).getText().toString(), ((EditText) findViewById(R.id.txtPlusAnoMes)).getText().toString(), ((Spinner) findViewById(R.id.spnConsumo)).getSelectedItem().toString(), Integer.parseInt(((EditText) findViewById(R.id.txtPlusCilindrada)).getText().toString()), Float.parseFloat(((EditText) findViewById(R.id.txtPlusKm)).getText().toString()), "");
+            url = "http://10.0.2.2:8080/car/" + LoginActivity.IdUser + "/newCar";
+            ClassCar reg = (new ClassCar(0, ((EditText) findViewById(R.id.txtPlusMatricula)).getText().toString(), ((EditText) findViewById(R.id.txtPlusModelo)).getText().toString(), ((EditText) findViewById(R.id.txtPlusAnoMes)).getText().toString(), ((Spinner) findViewById(R.id.spnConsumo)).getSelectedItem().toString(), Integer.parseInt(((EditText) findViewById(R.id.txtPlusCilindrada)).getText().toString()), Float.parseFloat(((EditText) findViewById(R.id.txtPlusKm)).getText().toString()), ""));
 
             json = new Gson().toJson(reg);//TODO: Checkar se funfa, sem api
         } else if ((findViewById(R.id.pnlNewCoima)).isShown()) {

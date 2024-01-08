@@ -150,11 +150,18 @@ public class RegistarActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    if(response.message()=="Utilizador registado com sucesso") {
-                        Toast.makeText(getApplicationContext(), "Utilizador criado com sucesso", Toast.LENGTH_LONG).show();
-                        finish();
+                    String s = response.body().string().toString();
+                    if(s.equals("Utilizador registado com sucesso")) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Utilizador criado com sucesso", Toast.LENGTH_LONG).show();
+                                finish();
+                            }
+                        });
+
                     }
-                    else if(response.message()=="Utilizador já existente!!")
+                    else if(s.equals("Utilizador já existente!!"))
                         Toast.makeText(getApplicationContext(), "Utilizador já existente", Toast.LENGTH_LONG).show();
 
                     Log.d("", "");

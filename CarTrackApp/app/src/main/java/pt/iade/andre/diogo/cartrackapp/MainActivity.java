@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextClock;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     DrawerLayout drawerLayout;
     Toolbar toolBar;
-    public static int IdUser=-1;
+   // public static int IdUser=-1;
     ActivityOnClickListener onClickListener;
 
     @Override
@@ -31,8 +33,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         onClickListener = new ActivityOnClickListener();
         Intent intent = getIntent();
-        IdUser = intent.getIntExtra("idUser", 1);
+        //String s = intent.getStringExtra("Username");
+        //IdUser = intent.getIntExtra("userid", -1);
 
+        //((TextView)findViewById(R.id.textView3)).setText("Olá "+s);
         background_doWork(); // função para incrementar todos os valores aqui!!
     }
 
